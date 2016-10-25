@@ -1,6 +1,5 @@
 ## [Synopsis](#synopsis)
-
-This is a spring boot application built to hold a growing collection of servlets I use with the iHub.
+Custom responsive BIRT viewer build with AngularJS.  Still under a lot of work
 
 [![Analytics](https://ga-beacon.appspot.com/UA-67485661-3/github/otcookbook/home)](https://github.com/igrigorik/ga-beacon)
 
@@ -13,9 +12,6 @@ This is a spring boot application built to hold a growing collection of servlets
 [Contributors](#contributors)
 
 [License](#license)
-
-## [Synopsis](#synopsis)
-Custom responsive BIRT viewer build with AngularJS.  Still under a lot of work
 
 
 ## Screenshots
