@@ -14,7 +14,7 @@ This is a spring boot application built to hold a growing collection of servlets
 
 [License](#license)
 
-## [Synopsis](#synopsis(
+## [Synopsis](#synopsis)
 Custom responsive BIRT viewer build with AngularJS.  Still under a lot of work
 
 
