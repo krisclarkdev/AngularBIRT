@@ -19,9 +19,9 @@ Custom responsive BIRT viewer build with AngularJS.  Still under a lot of work
 
 
 ## Screenshots
-![alt tag](https://github.com/kclark-jenkins/AngularBIRT/blob/master/Screenshots/AngularBIRT 1.png)
-![alt tag](https://github.com/kclark-jenkins/AngularBIRT/blob/master/Screenshots/AngularBIRT 2.png)
-![alt tag](https://github.com/kclark-jenkins/AngularBIRT/blob/master/Screenshots/AngularBIRT 3.png)
+![alt tag](https://github.com/kclark-jenkins/AngularBIRT/blob/master/screenshots/AngularBIRT%201.png)
+![alt tag](https://github.com/kclark-jenkins/AngularBIRT/blob/master/screenshots/AngularBIRT%202.png)
+![alt tag](https://github.com/kclark-jenkins/AngularBIRT/blob/master/screenshots/AngularBIRT%203.png)
 
 ## [Contributors](#contributors)
 
