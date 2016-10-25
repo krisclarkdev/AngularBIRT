@@ -3,15 +3,18 @@
 // Declare app level module which depends on views, and components
 angular.module('reportFilters', [
   'ngRoute',
-  'reportFilters.view1',
-  'reportFilters.view2',
-  'reportFilters.viewParameters',
-  'reportFilters.viewSaveDialog',
-  'reportFilters.viewSavedReports',
+  'reportFilters.footer',
+  'reportFilters.header',
+  'reportFilters.main',
+  'reportFilters.parameterDivider',
+  'reportFilters.parameters',
+  'reportFilters.saveDialog', 
+  'reportFilters.viewReport',
+  'reportFilters.project',
   'reportFilters.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
-  $routeProvider.otherwise({redirectTo: '/view1'});
+  $routeProvider.otherwise({redirectTo: '/main'});
 }]);

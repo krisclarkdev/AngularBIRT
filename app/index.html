@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>My AngularJS App</title>
+  <title>AngularBIRT</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,28 +14,33 @@
   <link rel="stylesheet" href="components/jquery-ui/1.12.1/jquery-ui.min.css">
   <link rel="stylesheet" href="components/jquery-ui/1.12.1/jquery-ui.theme.min.css">
 
+  <link rel="stylesheet" href="components/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="components/bootstrap/3.3.7/css/bootstrap.min.css.map">
+  <link rel="stylesheet" href="components/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="components/bootstrap/3.3.7/css/bootstrap-theme.min.css.map">
+
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="components/angularbirt/css/0.0.1/reportFilters.css">
+
+  <link rel="stylesheet" href="components/fontawesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
 <body>
-  <ul class="menu">
-    <li><a href="#!/view1">view1</a></li>
-    <li><a href="#!/view2">view2</a></li>
-    <li><a href="#!/viewParameters">Parameters</a></li>
-    <li><a href="#!/viewReport">Report</a></li>
-    <li><a href="#!/viewSaveDialog">Save Report</a></li>
-    <li><a href="#!/viewSavedReports">Saved Reports</a></li>
-  </ul>
-
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-view></div>
 
-  <div>Angular seed app: v<span app-version></span></div>
+  <div ng-include="'views/header/header.html'"></div>
+  <div class="parametersPane" ng-include="'views/parameterDivider/parameterDivider.html'"></div>
+  <div class="parametersPane" ng-include="'views/parameters/parameters.html'"></div>
+  <div ng-view class="mainApp">
+  </div>
+  <div ng-include="'views/footer/footer.html'"></div>
+
+  <!-- <div>Angular seed app: v<span app-version></span></div> -->
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -43,18 +48,29 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
-  <script src="view1/view1.js"></script>
-  <script src="view2/view2.js"></script>
-  <script src="viewParameters/viewParameters.js"></script>
-  <script src="viewReport/viewReport.js"></script>
-  <script src="viewSaveDialog/viewSaveDialog.js"></script>
-  <script src="viewSavedReports/viewSavedReports.js"></script>
+
+  <script src="views/header/header.js"></script>
+  <script src="views/footer/footer.js"></script>
+  <script src="views/parameterDivider/parameterDivider.js"></script>
+  <script src="views/main/main.js"></script>
+  <script src="views/open/open.js"></script>
+  <script src="views/parameters/parameters.js"></script>
+  <script src="views/viewReport/viewReport.js"></script>
+  <script src="views/saveDialog/saveDialog.js"></script>
+  <script src="components/project/project.js"></script>
   <script src="components/version/version.js"></script>
+
+  <script src="components/project/project-directive.js"></script>
+  <script src="components/project/interpolate-filter.js"></script>
+
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
 
   <script src="components/jquery/3.1.1/jquery.min.js"></script>
   <script src="components/jquery-ui/1.12.1/jquery-ui.min.js"></script>
-  <script src="components/actuate/16/jsapi.js"></script>
+  <script src="components/actuate/js/16.0.0/jsapi.js"></script>
+  <script src="components/bootstrap/3.3.7/bootstrap.min.js"></script>
+
+  <script src="components/angularbirt/js/0.0.1/angularbirt.js"></script>
 </body>
 </html>

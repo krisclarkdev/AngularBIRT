@@ -16,6 +16,9 @@
     "karma-junit-reporter": "^0.4.1",
     "protractor": "^4.0.9"
   },
+  "dependencies": {
+    "bootstrap": "3"
+  },
   "scripts": {
     "postinstall": "bower install",
 
