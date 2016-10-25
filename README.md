@@ -1,5 +1,5 @@
 ## [Synopsis](#synopsis)
-Custom responsive BIRT viewer build with AngularJS.  Still under a lot of work
+Custom responsive BIRT viewer built with AngularJS.  Still under a lot of work
 
 [![Analytics](https://ga-beacon.appspot.com/UA-67485661-3/github/otcookbook/home)](https://github.com/igrigorik/ga-beacon)
 
