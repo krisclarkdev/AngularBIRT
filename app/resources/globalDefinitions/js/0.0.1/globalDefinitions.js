@@ -1,0 +1,10 @@
+window.ihub         = 'http://ihub.demoimage.com:8700/iportal/';
+window.myViewer     = null;
+window.username     = 'Administrator';
+window.password     = null;
+window.volume       = 'Default Volume';
+window.repoType     = 'Enterprise';
+window.reqOps       = null;
+window.reportDesign = '/Home/administrator/Medical Report.rptdesign;1';
+window.bookmarkName = 'mytable';
+window.columnNames  = new Array();

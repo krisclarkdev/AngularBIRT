@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    var ihub         = 'http://ihub.demoimage.com:8700/iportal/';
+/*    var ihub         = 'http://ihub.demoimage.com:8700/iportal/';
     var myViewer     = null;
     var username     = 'Administrator';
     var password     = null;
@@ -8,11 +8,14 @@ $(document).ready(function() {
     var reqOps       = null;
     var reportDesign = '/Home/administrator/Medical Report.rptdesign;1';
     var bookmarkName = 'mytable';
-    var columnNames  = new Array();
+    var columnNames  = new Array();*/
 
     var dialogOpen = $('#dialogOpen').dialog({autoOpen: false, zIndex: 10000});
     var dialogSave = $('#dialogSave').dialog({autoOpen: false, zIndex: 10000});
     var dialogHelp = $('#dialogHelp').dialog({autoOpen: false, zIndex: 10000});
+
+    //$('.toolbarDialogButton').dialog({autoOpen: false, zIndex: 10000});
+
     var accordionGroups = $('#accordionGroups').accordion();
     $('#accordionGroups').hide();
 
@@ -20,27 +23,71 @@ $(document).ready(function() {
         e.stopPropagation();
     });
 
-    $('#openReport').click(function() {
+    $('.toolbarButtons').click(function(event) {
+        var elementID = $(this).attr('id');
+
+        if(elementID == 'openReport') {
+            openReportDialog();
+        }else if(elementID == 'save') {
+            save();
+        }else if(elementID == 'filterGroupsDropDown'){
+            //
+        }else if(elementID == 'help') {
+            openHelpDialog();
+        }else if(elementID == 'exportDropDown') {
+
+        }else if(elementID == 'home') {
+            //
+        }
+    });
+
+    function openReportDialog() {
         var resultDef = "Name|FileType|Version|VersionName|Description";
         getItems(resultDef, "explorerpane");
         dialogOpen.dialog('open');
-    });
+    }
 
-    //$('.save').click(function(){myViewer.saveReportDesign();});
-
-    $('#save').click(function(){
+    function openSaveFilterDialog() {
         $('#saveInput').val('');
         var resultDef = "Name|FileType|Version|VersionName|Description";
         dialogSave.dialog('open');
         getItems(resultDef, "explorerpane2")
         myViewer.saveReportDesign('myNewDesign.rptdesign', function(){console.log('done saving');     // LIVE
-        //myViewer.saveReportDocument('myNewDesign.rptdesign', function(){console.log('done saving'); // CACHED
+            //myViewer.saveReportDocument('myNewDesign.rptdesign', function(){console.log('done saving'); // CACHED
         })
-    });
+    }
 
-    $('#help').click(function() {
+    function openFiltersDropDown() {
+
+    }
+
+    function openParametersDropDown() {
+        $('#accordionGroups').hide();
+        $('.parameterButtons').show();
+        $('.pTable').show();
+        //$('#filterGroupsPane').hide();
+        //$('.parametersContent').show();
+        //$('#filterGroupsPane').show();
+        $('.parametersPane').fadeToggle( "slow", "linear" );
+    }
+
+    function openHelpDialog() {
         dialogHelp.dialog('open');
-    });
+    }
+
+    function openExportDropDown() {
+
+    }
+
+    //$('.save').click(function(){myViewer.saveReportDesign();});
+
+    //$('#save').click(function(){
+
+    //});
+
+    //$('#help').click(function() {
+
+    //});
 
     $(window).on('resize', function() {
         var footerPosition = $('.footer').position();
@@ -81,8 +128,18 @@ $(document).ready(function() {
         buildParams();
         executeReport();
         dialogOpen.dialog('close');
-       console.log(reportNameChange);
+        console.log(reportNameChange);
     });
+    /*$('#btnOpenReport').click(function() {
+        //buildParams();
+        reportDesign = reportNameChange;
+        console.log('#@#@#@#');
+        buildParams();
+        executeReport();
+        dialogOpen.dialog('close');
+       console.log(reportNameChange);
+       console.log(reportNameChange);
+    });*/
 
     function getItems(resultDef, pane) {
         console.log('getting items');
@@ -100,6 +157,12 @@ $(document).ready(function() {
         var test = explorer.submit();
         console.log(test);
     }
+
+    $('#openReport').click(function() {
+        var resultDef = "Name|FileType|Version|VersionName|Description";
+        getItems(resultDef, "explorerpane");
+        dialogOpen.dialog('open');
+    });
 
     //$("#openReport").click(function(){
         //alert('test');
@@ -119,34 +182,14 @@ $(document).ready(function() {
 
     //$('#parametersDropDown').click(function() {if($('.parametersPane').is(":visible")) {$('.parametersPane').fadeToggle( "slow", "linear" );}else{buildParams();}});
 
-    $('#parametersDropDown').click(function() {
-        $('#accordionGroups').hide();
-        $('.parameterButtons').show();
-        $('.pTable').show();
-        //$('#filterGroupsPane').hide();
-        //$('.parametersContent').show();
-        //$('#filterGroupsPane').show();
-        $('.parametersPane').fadeToggle( "slow", "linear" );
+    //$('#parametersDropDown').click(function() {
 
         //buildParams();
-    });
+    //});
 
-    $('#filterGroupsDropDown').click(function() {
-        console.log('click1');
-        //
-        //$('.parametersContent').hide();
-        //$('.pTable').hide();
-        //$('#parametersContent').hide();
-        //$('#filterGroupsPane').show();
-        //$('.parametersContainer').parent().hide();
-        $('#accordionGroups').show();
-        $('.pTable').hide();
-        $('.parameterButtons').hide();
-        //$('.filterGroupsPane').show();
-        $('.parametersPane').fadeToggle( "slow", "linear" );
+//    $('#filterGroupsDropDown').click(function() {
 
-        console.log('click2');
-    });
+//    });
     //$('#parametersDropDown').click(function() {if($('.parametersPane').is(":visible")) {$('.parametersPane').fadeToggle( "slow", "linear" );}else{buildParams();}});
     //$('#parametersDropDown').click(function() {if($('.parametersPane').is(":visible")) {$('.parametersPane').fadeToggle( "slow", "linear" );}else{buildParams();}});
     //$('#filterGroupsDropDown').click(function() {
