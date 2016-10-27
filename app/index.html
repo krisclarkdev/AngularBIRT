@@ -32,19 +32,6 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <aside id="sticky-social">
-    <ul>
-      <li><a href="#" class="entypo-facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
-      <li><a href="#" class="entypo-twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a></li>
-      <li><a href="#" class="entypo-gplus" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i><span>Google+</span></a></li>
-      <li><a href="#" class="entypo-linkedin" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i><span>LinkedIn</span></a></li>
-      <li><a href="#" class="entypo-instagrem" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a></li>
-      <li><a href="#" class="entypo-stumbleupon" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></i><span>StumbleUpon</span></a></li>
-      <li><a href="#" class="entypo-pinterest" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i><span>Pinterest</span></a></li>
-      <li><a href="#" class="entypo-flickr" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i><span>Flickr</span></a></li>
-      <li><a href="#" class="entypo-tumblr" target="_blank"><i class="fa fa-tumblr" aria-hidden="true"></i><span>Tumblr</span></a></li>
-    </ul>
-  </aside>
 
   <div id="dialogOpen" title="Open Report">
     <div class="viewerDialogs" id="explorerpane"></div>
@@ -64,6 +51,7 @@
     <button class="btn btn-success" id="btnHelpOK">OK</button><button class="btn btn-success execute" id="btnHelpCancel">Cancel</button>
   </div>
   <div ng-include="'views/header/header.html'"></div>
+  <div class="social" ng-include="'views/social/social.html'"></div>
   <div class="parametersPane" ng-include="'views/parameterDivider/parameterDivider.html'"></div>
   <div class="parametersPane" ng-include="'views/parameters/parameters.html'"></div>
   <div class="parametersPane" ng-include="'views/filterGroups/filterGroups.html'"></div>
@@ -91,6 +79,7 @@
   <script src="views/parameters/parameters.js"></script>
   <script src="views/viewReport/viewReport.js"></script>
   <script src="views/saveDialog/saveDialog.js"></script>
+  <script src="views/social/social.js"></script>
   <script src="components/project/project.js"></script>
   <script src="components/version/version.js"></script>
 
