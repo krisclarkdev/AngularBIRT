@@ -1,11 +1,11 @@
 $(document).ready(function() {
-    var ihub     = 'http://ihub.demoimage.com:8700/iportal/';
-    var myViewer = null;
-    var username = 'Administrator';
-    var password = null;
-    var volume   = 'Default Volume';
-    var repoType = 'Enterprise';
-    var reqOps   = null;
+    var ihub         = 'http://ihub.demoimage.com:8700/iportal/';
+    var myViewer     = null;
+    var username     = 'Administrator';
+    var password     = null;
+    var volume       = 'Default Volume';
+    var repoType     = 'Enterprise';
+    var reqOps       = null;
     var reportDesign = '/Home/administrator/Medical Report.rptdesign;1';
     var bookmarkName = 'mytable';
     var columnNames  = new Array();
@@ -33,7 +33,8 @@ $(document).ready(function() {
         var resultDef = "Name|FileType|Version|VersionName|Description";
         dialogSave.dialog('open');
         getItems(resultDef, "explorerpane2")
-        myViewer.saveReportDesign('myNewDesign.rptdesign', function(){console.log('done saving');
+        myViewer.saveReportDesign('myNewDesign.rptdesign', function(){console.log('done saving');     // LIVE
+        //myViewer.saveReportDocument('myNewDesign.rptdesign', function(){console.log('done saving'); // CACHED
         })
     });
 

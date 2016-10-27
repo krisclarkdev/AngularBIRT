@@ -11,7 +11,8 @@ angular.module('reportFilters', [
   'reportFilters.main',
   'reportFilters.parameterDivider',
   'reportFilters.parameters',
-  'reportFilters.saveDialog', 
+  'reportFilters.saveDialog',
+  'reportFilters.social',
   'reportFilters.viewReport',
   'reportFilters.project',
   'reportFilters.version'
