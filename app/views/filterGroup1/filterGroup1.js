@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('reportFilters.filterGroup1', ['ngRoute'])
+angular.module('AngularBIRT.filterGroup1', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/filtergroup1', {

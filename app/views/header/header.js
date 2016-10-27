@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('reportFilters.header', ['ngRoute'])
+angular.module('AngularBIRT.header', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/header', {

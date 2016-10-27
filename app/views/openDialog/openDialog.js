@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('reportFilters.openDialog', ['ngRoute'])
+angular.module('AngularBIRT.openDialog', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/openDialog', {

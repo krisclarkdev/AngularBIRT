@@ -1,7 +1,7 @@
 'use strict';
 
-describe('reportFilters.version module', function() {
-  beforeEach(module('reportFilters.version'));
+describe('AngularBIRT.version module', function() {
+  beforeEach(module('AngularBIRT.version'));
 
   describe('version service', function() {
     it('should return current version', inject(function(version) {

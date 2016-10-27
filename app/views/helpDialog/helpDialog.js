@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('reportFilters.helpDialog', ['ngRoute'])
+angular.module('AngularBIRT.helpDialog', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/helpDialog', {

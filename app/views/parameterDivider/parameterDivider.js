@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('reportFilters.parameterDivider', ['ngRoute'])
+angular.module('AngularBIRT.parameterDivider', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/parameterDivider', {

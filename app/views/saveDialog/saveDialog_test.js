@@ -1,8 +1,8 @@
 'use strict';
 
-describe('reportFilters.saveDialog module', function() {
+describe('AngularBIRT.saveDialog module', function() {
 
-    beforeEach(module('reportFilters.saveDialog'));
+    beforeEach(module('AngularBIRT.saveDialog'));
 
     describe('saveDialog controller', function(){
 

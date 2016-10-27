@@ -1,8 +1,8 @@
 'use strict';
 
-describe('reportFilters.social module', function() {
+describe('AngularBIRT.social module', function() {
 
-    beforeEach(module('reportFilters.social'));
+    beforeEach(module('AngularBIRT.social'));
 
     describe('social controller', function(){
 

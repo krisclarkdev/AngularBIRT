@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('reportFilters.version', [
-  'reportFilters.version.interpolate-filter',
-  'reportFilters.version.version-directive'
+angular.module('AngularBIRT.version', [
+  'AngularBIRT.version.interpolate-filter',
+  'AngularBIRT.version.version-directive'
 ])
 
 .value('version', '0.0.1');

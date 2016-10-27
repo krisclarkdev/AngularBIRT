@@ -1,23 +1,23 @@
 'use strict';
 
 // Declare app level module which depends on views, and components
-angular.module('reportFilters', [
+angular.module('AngularBIRT', [
   'ngRoute',
-  'reportFilters.filterGroup1',
-  'reportFilters.filterGroup2',
-  'reportFilters.filterGroups',
-  'reportFilters.footer',
-  'reportFilters.header',
-  'reportFilters.helpDialog',
-  'reportFilters.main',
-  'reportFilters.openDialog',
-  'reportFilters.parameterDivider',
-  'reportFilters.parameters',
-  'reportFilters.saveDialog',
-  'reportFilters.social',
-  'reportFilters.viewReport',
-  'reportFilters.project',
-  'reportFilters.version'
+  'AngularBIRT.filterGroup1',
+  'AngularBIRT.filterGroup2',
+  'AngularBIRT.filterGroups',
+  'AngularBIRT.footer',
+  'AngularBIRT.header',
+  'AngularBIRT.helpDialog',
+  'AngularBIRT.main',
+  'AngularBIRT.openDialog',
+  'AngularBIRT.parameterDivider',
+  'AngularBIRT.parameters',
+  'AngularBIRT.saveDialog',
+  'AngularBIRT.social',
+  'AngularBIRT.viewReport',
+  'AngularBIRT.project',
+  'AngularBIRT.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

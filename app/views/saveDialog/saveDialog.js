@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('reportFilters.saveDialog', ['ngRoute'])
+angular.module('AngularBIRT.saveDialog', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/saveDialog', {

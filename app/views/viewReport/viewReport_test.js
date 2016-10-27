@@ -1,8 +1,8 @@
 'use strict';
 
-describe('reportFilters.viewReport module', function() {
+describe('AngularBIRT.viewReport module', function() {
 
-    beforeEach(module('reportFilters.viewReport'));
+    beforeEach(module('AngularBIRT.viewReport'));
 
     describe('viewReport controller', function(){
 

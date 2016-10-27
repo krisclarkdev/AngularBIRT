@@ -1,8 +1,8 @@
 'use strict';
 
-describe('reportFilters.parameters module', function() {
+describe('AngularBIRT.parameters module', function() {
 
-    beforeEach(module('reportFilters.parameters'));
+    beforeEach(module('AngularBIRT.parameters'));
 
     describe('parameters controller', function(){
 

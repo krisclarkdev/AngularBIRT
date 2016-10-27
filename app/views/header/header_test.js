@@ -1,8 +1,8 @@
 'use strict';
 
-describe('reportFilters.footer module', function() {
+describe('AngularBIRT.footer module', function() {
 
-    beforeEach(module('reportFilters.footer'));
+    beforeEach(module('AngularBIRT.footer'));
 
     describe('footer controller', function(){
 

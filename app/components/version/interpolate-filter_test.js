@@ -1,7 +1,7 @@
 'use strict';
 
-describe('reportFilters.version module', function() {
-  beforeEach(module('reportFilters.version'));
+describe('AngularBIRT.version module', function() {
+  beforeEach(module('AngularBIRT.version'));
 
   describe('interpolate filter', function() {
     beforeEach(module(function($provide) {

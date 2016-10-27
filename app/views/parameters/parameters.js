@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('reportFilters.parameters', ['ngRoute'])
+angular.module('AngularBIRT.parameters', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/parameters', {

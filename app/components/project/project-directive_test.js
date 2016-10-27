@@ -1,8 +1,8 @@
 'use strict';
 
 
-describe('reportFilters.project module', function() {
-    beforeEach(module('reportFilters.project'));
+describe('AngularBIRT.project module', function() {
+    beforeEach(module('AngularBIRT.project'));
 
     describe('app-project directive', function() {
         it('should print current project', function() {

@@ -1,8 +1,8 @@
 'use strict';
 
-describe('reportFilters.helpDialog module', function() {
+describe('AngularBIRT.helpDialog module', function() {
 
-    beforeEach(module('reportFilters.helpDialog'));
+    beforeEach(module('AngularBIRT.helpDialog'));
 
     describe('helpDialog controller', function(){
 

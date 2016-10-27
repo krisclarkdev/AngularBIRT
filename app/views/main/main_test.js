@@ -1,8 +1,8 @@
 'use strict';
 
-describe('reportFilters.main module', function() {
+describe('AngularBIRT.main module', function() {
 
-  beforeEach(module('reportFilters.main'));
+  beforeEach(module('AngularBIRT.main'));
 
   describe('main controller', function(){
 

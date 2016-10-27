@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('reportFilters.viewReport', ['ngRoute'])
+angular.module('AngularBIRT.viewReport', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/viewReport', {

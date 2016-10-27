@@ -1,7 +1,7 @@
 'use strict';
 
-describe('reportFilters.version module', function() {
-  beforeEach(module('reportFilters.version'));
+describe('AngularBIRT.version module', function() {
+  beforeEach(module('AngularBIRT.version'));
 
   describe('app-version directive', function() {
     it('should print current version', function() {

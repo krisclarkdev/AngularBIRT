@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="components/jquery-ui/1.12.1/jquery-ui.structure.min.css">
-  <link rel="stylesheet" href="components/jquery-ui/1.12.1/jquery-ui.min.css">
-  <link rel="stylesheet" href="components/jquery-ui/1.12.1/jquery-ui.theme.min.css">
+  <link rel="stylesheet" href="resources/jquery-ui/css/1.12.1/jquery-ui.structure.min.css">
+  <link rel="stylesheet" href="resources/jquery-ui/css/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="resources/jquery-ui/css/1.12.1/jquery-ui.theme.min.css">
 
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
@@ -34,33 +34,38 @@
     $script([
       'bower_components/angular/angular.js',
       'bower_components/angular-route/angular-route.js',
-      'app.js',
-      'main/main.js',
-      'view2/view2.js',
-      'parameters/parameters.js',
-      'viewReport/viewReport.js',
-      'saveDialog/saveDialog.js',
-      'viewSavedReports/viewSavedReports.js',
+      'views/filterGroup1/filterGroup1.js',
+      'views/filterGroup2/filterGroup2.js',
+      'views/filterGroups/filterGroups.js',
+      'views/header/header.js',
+      'views/helpDialog/helpDialog.js',
+      'views/footer/footer.js',
+      'views/parameterDivider/parameterDivider.js',
+      'views/main/main.js',
+      'views/openDialog/openDialog.js',
+      'views/parameters/parameters.js',
+      'views/viewReport/viewReport.js',
+      'views/saveDialog/saveDialog.js',
+      'views/social/social.js',
+      'components/project/project.js',
       'components/version/version.js',
+      'components/project/project-directive.js',
+      'components/project/interpolate-filter.js',
       'components/version/version-directive.js',
-      'components/version/interpolate-filter.js'
+      'components/version/interpolate-filter.js',
+      'resources/jquery/js/3.1.1/jquery.min.js',
+      'resources/jquery-ui/js/1.12.1/jquery-ui.min.js',
+      'resources/actuate/js/1.9.0/jsapi.js',
+      'resources/bootstrap/js/3.3.7/bootstrap.min.js'
     ], function() {
       // when all is done, execute bootstrap angular application
-      angular.bootstrap(document, ['reportFilters']);
+      angular.bootstrap(document, ['AngularBIRT']);
     });
   </script>
   <title>My AngularJS App</title>
   <link rel="stylesheet" href="app.css">
 </head>
 <body ng-cloak>
-  <ul class="menu">
-    <li><a href="#!/main">main</a></li>
-    <li><a href="#!/view2">view2</a></li>
-    <li><a href="#!/parameters">Parameters</a></li>
-    <li><a href="#!/viewReport">Report</a></li>
-    <li><a href="#!/saveDialog">Save Report</a></li>
-    <li><a href="#!/viewSavedReports">Saved Reports</a></li>
-  </ul>
 
   <div ng-view></div>
 

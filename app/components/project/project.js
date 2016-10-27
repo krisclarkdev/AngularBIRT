@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('reportFilters.project', [
-    'reportFilters.project.interpolate-filter',
-    'reportFilters.project.project-directive'
+angular.module('AngularBIRT.project', [
+    'AngularBIRT.project.interpolate-filter',
+    'AngularBIRT.project.project-directive'
 ])
 
     .value('project', 'AngularBIRT');

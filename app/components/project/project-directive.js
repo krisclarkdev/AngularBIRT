@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('reportFilters.project.project-directive', [])
+angular.module('AngularBIRT.project.project-directive', [])
 
     .directive('appVersion', ['project', function(project) {
         return function(scope, elm, attrs) {

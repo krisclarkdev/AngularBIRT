@@ -1,8 +1,8 @@
 'use strict';
 
-describe('reportFilters.parameterDivider module', function() {
+describe('AngularBIRT.parameterDivider module', function() {
 
-    beforeEach(module('reportFilters.parameterDivider'));
+    beforeEach(module('AngularBIRT.parameterDivider'));
 
     describe('parameterDivider controller', function(){
 

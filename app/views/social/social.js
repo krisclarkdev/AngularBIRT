@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('reportFilters.social', ['ngRoute'])
+angular.module('AngularBIRT.social', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/social', {

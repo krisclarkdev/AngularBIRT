@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" ng-app="reportFilters" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" ng-app="reportFilters" class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" ng-app="reportFilters" class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" ng-app="reportFilters" class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="en" ng-app="AngularBIRT" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="AngularBIRT" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="AngularBIRT" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="AngularBIRT" class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,20 +10,20 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="stylesheet" href="components/jquery-ui/1.12.1/jquery-ui.structure.min.css">
-  <link rel="stylesheet" href="components/jquery-ui/1.12.1/jquery-ui.min.css">
-  <link rel="stylesheet" href="components/jquery-ui/1.12.1/jquery-ui.theme.min.css">
+  <link rel="stylesheet" href="resources/jquery-ui/css/1.12.1/jquery-ui.structure.min.css">
+  <link rel="stylesheet" href="resources/jquery-ui/css/1.12.1/jquery-ui.min.css">
+  <link rel="stylesheet" href="resources/jquery-ui/css/1.12.1/jquery-ui.theme.min.css">
 
-  <link rel="stylesheet" href="components/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="components/bootstrap/3.3.7/css/bootstrap.min.css.map">
-  <link rel="stylesheet" href="components/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" href="components/bootstrap/3.3.7/css/bootstrap-theme.min.css.map">
+  <link rel="stylesheet" href="resources/bootstrap/css/3.3.7/bootstrap.min.css">
+  <link rel="stylesheet" href="resources/bootstrap/css/3.3.7/bootstrap.min.css.map">
+  <link rel="stylesheet" href="resources/bootstrap/css/3.3.7/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="resources/bootstrap/css/3.3.7/bootstrap-theme.min.css.map">
 
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
-  <link rel="stylesheet" href="components/angularbirt/css/0.0.1/reportFilters.css">
+  <link rel="stylesheet" href="resources/angularbirt/css/0.0.1/AngularBIRT.css">
 
-  <link rel="stylesheet" href="components/fontawesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="resources/fontawesome/css/4.7.0/font-awesome.min.css">
   <link rel="stylesheet" href="app.css">
   <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
@@ -40,9 +40,9 @@
   <div class="parametersPane" ng-include="'views/parameters/parameters.html'"></div>
   <div class="saveView" ng-include="'views/saveDialog/saveDialog.html'"></div>
   <div class="parametersPane" ng-include="'views/filterGroups/filterGroups.html'"></div>
+  <div ng-include="'views/footer/footer.html'"></div>
   <div ng-view class="mainApp">
   </div>
-  <div ng-include="'views/footer/footer.html'"></div>
 
   <!-- <div>Angular seed app: v<span app-version></span></div> -->
 
@@ -75,12 +75,12 @@
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
 
-  <script src="components/jquery/3.1.1/jquery.min.js"></script>
-  <script src="components/jquery-ui/1.12.1/jquery-ui.min.js"></script>
-  <script src="components/actuate/js/16.0.0/jsapi.js"></script>
-  <script src="components/bootstrap/3.3.7/bootstrap.min.js"></script>
+  <script src="resources/jquery/js/3.1.1/jquery.min.js"></script>
+  <script src="resources/jquery-ui/js/1.12.1/jquery-ui.min.js"></script>
+  <script src="resources/actuate/js/1.9.0/jsapi.js"></script>
+  <script src="resources/bootstrap/js/3.3.7/bootstrap.min.js"></script>
 
-  <script src="components/angularbirt/js/0.0.1/angularbirt.js"></script>
+  <script src="resources/angularbirt/js/app/0.0.1/angularbirt.js"></script>
 
 </body>
 </html>

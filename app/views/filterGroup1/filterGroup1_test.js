@@ -1,8 +1,8 @@
 'use strict';
 
-describe('reportFilters.filterGroup1 module', function() {
+describe('AngularBIRT.filterGroup1 module', function() {
 
-    beforeEach(module('reportFilters.filterGroup1'));
+    beforeEach(module('AngularBIRT.filterGroup1'));
 
     describe('filter group 1 controller', function(){
 

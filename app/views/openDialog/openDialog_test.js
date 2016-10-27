@@ -1,8 +1,8 @@
 'use strict';
 
-describe('reportFilters.openDialog module', function() {
+describe('AngularBIRT.openDialog module', function() {
 
-  beforeEach(module('reportFilters.openDialog'));
+  beforeEach(module('AngularBIRT.openDialog'));
 
   describe('openDialog controller', function(){
 
