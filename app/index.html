@@ -32,10 +32,41 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
+  <aside id="sticky-social">
+    <ul>
+      <li><a href="#" class="entypo-facebook" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
+      <li><a href="#" class="entypo-twitter" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a></li>
+      <li><a href="#" class="entypo-gplus" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i><span>Google+</span></a></li>
+      <li><a href="#" class="entypo-linkedin" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i><span>LinkedIn</span></a></li>
+      <li><a href="#" class="entypo-instagrem" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i><span>Instagram</span></a></li>
+      <li><a href="#" class="entypo-stumbleupon" target="_blank"><i class="fa fa-stumbleupon" aria-hidden="true"></i></i><span>StumbleUpon</span></a></li>
+      <li><a href="#" class="entypo-pinterest" target="_blank"><i class="fa fa-pinterest" aria-hidden="true"></i><span>Pinterest</span></a></li>
+      <li><a href="#" class="entypo-flickr" target="_blank"><i class="fa fa-flickr" aria-hidden="true"></i><span>Flickr</span></a></li>
+      <li><a href="#" class="entypo-tumblr" target="_blank"><i class="fa fa-tumblr" aria-hidden="true"></i><span>Tumblr</span></a></li>
+    </ul>
+  </aside>
 
+  <div id="dialogOpen" title="Open Report">
+    <div class="viewerDialogs" id="explorerpane"></div>
+    <button class="btn btn-success" id="btnOpenReport">Open</button><button class="btn btn-success execute" id="cancel">Cancel</button>
+  </div>
+
+  <div id="dialogSave" title="Save Report">
+    <div class="viewerDialogs" id="explorerpane2"></div><br/>
+    <input type="text" class="form-control" id="saveInput"><br/>
+    <button class="btn btn-success" id="btnOpenReport2">Open</button><button class="btn btn-success execute" id="cancel2">Cancel</button>
+  </div>
+
+  <div id="dialogHelp" title="Help">
+    <p>AngularBIRT is an example interactive viewer for BIRT and InformationHub 16.  This example code is not meant for
+    production use and is merely a way to show integration into your application using OpenText InformationHub's JavaScript
+    API and Angular.</p>
+    <button class="btn btn-success" id="btnHelpOK">OK</button><button class="btn btn-success execute" id="btnHelpCancel">Cancel</button>
+  </div>
   <div ng-include="'views/header/header.html'"></div>
   <div class="parametersPane" ng-include="'views/parameterDivider/parameterDivider.html'"></div>
   <div class="parametersPane" ng-include="'views/parameters/parameters.html'"></div>
+  <div class="parametersPane" ng-include="'views/filterGroups/filterGroups.html'"></div>
   <div ng-view class="mainApp">
   </div>
   <div ng-include="'views/footer/footer.html'"></div>
@@ -49,6 +80,9 @@
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="app.js"></script>
 
+  <script src="views/filterGroup1/filterGroup1.js"></script>
+  <script src="views/filterGroup2/filterGroup2.js"></script>
+  <script src="views/filterGroups/filterGroups.js"></script>
   <script src="views/header/header.js"></script>
   <script src="views/footer/footer.js"></script>
   <script src="views/parameterDivider/parameterDivider.js"></script>
@@ -72,5 +106,6 @@
   <script src="components/bootstrap/3.3.7/bootstrap.min.js"></script>
 
   <script src="components/angularbirt/js/0.0.1/angularbirt.js"></script>
+
 </body>
 </html>

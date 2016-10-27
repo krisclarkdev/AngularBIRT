@@ -1,12 +1,45 @@
 $(document).ready(function() {
     var ihub     = 'http://ihub.demoimage.com:8700/iportal/';
     var myViewer = null;
-    var username = null;
+    var username = 'Administrator';
     var password = null;
     var volume   = 'Default Volume';
     var repoType = 'Enterprise';
     var reqOps   = null;
-    var reportDesign = '/Applications/BIRT Sample App/Report Designs/Monthly Revenue Analysis.rptdesign;1';
+    var reportDesign = '/Home/administrator/Medical Report.rptdesign;1';
+    var bookmarkName = 'mytable';
+    var columnNames  = new Array();
+
+    var dialogOpen = $('#dialogOpen').dialog({autoOpen: false, zIndex: 10000});
+    var dialogSave = $('#dialogSave').dialog({autoOpen: false, zIndex: 10000});
+    var dialogHelp = $('#dialogHelp').dialog({autoOpen: false, zIndex: 10000});
+    var accordionGroups = $('#accordionGroups').accordion();
+    $('#accordionGroups').hide();
+
+    $('#accordionGroups input[type="checkbox"]').click(function(e) {
+        e.stopPropagation();
+    });
+
+    $('#openReport').click(function() {
+        var resultDef = "Name|FileType|Version|VersionName|Description";
+        getItems(resultDef, "explorerpane");
+        dialogOpen.dialog('open');
+    });
+
+    //$('.save').click(function(){myViewer.saveReportDesign();});
+
+    $('#save').click(function(){
+        $('#saveInput').val('');
+        var resultDef = "Name|FileType|Version|VersionName|Description";
+        dialogSave.dialog('open');
+        getItems(resultDef, "explorerpane2")
+        myViewer.saveReportDesign('myNewDesign.rptdesign', function(){console.log('done saving');
+        })
+    });
+
+    $('#help').click(function() {
+        dialogHelp.dialog('open');
+    });
 
     $(window).on('resize', function() {
         var footerPosition = $('.footer').position();
@@ -18,6 +51,8 @@ $(document).ready(function() {
 
     actuate.load('viewer');
     actuate.load('parameter');
+    actuate.load('reportexplorer');
+    actuate.load("dialog");
 
     reqOps = new actuate.RequestOptions();
     reqOps.setRepositoryType(repoType);
@@ -33,13 +68,90 @@ $(document).ready(function() {
 
     $('#lastPageLink').click(function() {myViewer.gotoPage(viewer1.getTotalPageCount());});
 
-    $( "#dialog" ).dialog({autoOpen: false});
+    var reportNameChange = '';
+
 
     $('#cancel').click(function() {$('.parametersPane').fadeToggle( "slow", "linear" );});
 
-    $("#openReport").click(function(){console.log('opening ' + reportDesign);});
+    $('#btnOpenReport').click(function() {
+        //buildParams();
+        reportDesign = reportNameChange;
+        console.log('#@#@#@#');
+        buildParams();
+        executeReport();
+        dialogOpen.dialog('close');
+       console.log(reportNameChange);
+    });
 
-    $('#parametersDropDown').click(function() {if($('.parametersPane').is(":visible")) {$('.parametersPane').fadeToggle( "slow", "linear" );}else{buildParams();}});
+    function getItems(resultDef, pane) {
+        console.log('getting items');
+        var explorer = new actuate.ReportExplorer(pane);
+        explorer.registerEventHandler(
+            actuate.reportexplorer.EventConstants.ON_SELECTION_CHANGED,
+            function(selectedItem, pathName, pane) {
+                console.log(pathName);
+                reportNameChange = pathName;
+                $('#saveInput').val(pathName);
+
+            });
+        explorer.setFolderName("/");
+        explorer.setResultDef( resultDef.split("|") );
+        var test = explorer.submit();
+        console.log(test);
+    }
+
+    //$("#openReport").click(function(){
+        //alert('test');
+        //$("#dialog").dialog("open");
+        /*
+        console.log($('.birtParameter'));
+        var t = $('.birtParameter');
+        var paramMap = {};
+        for(i=0; i<t.length;i++) {
+            paramMap [t[i].name] = t[i].value;
+        }*/
+
+        //executeReport(paramMap);
+    //});
+
+
+
+    //$('#parametersDropDown').click(function() {if($('.parametersPane').is(":visible")) {$('.parametersPane').fadeToggle( "slow", "linear" );}else{buildParams();}});
+
+    $('#parametersDropDown').click(function() {
+        $('#accordionGroups').hide();
+        $('.parameterButtons').show();
+        $('.pTable').show();
+        //$('#filterGroupsPane').hide();
+        //$('.parametersContent').show();
+        //$('#filterGroupsPane').show();
+        $('.parametersPane').fadeToggle( "slow", "linear" );
+
+        //buildParams();
+    });
+
+    $('#filterGroupsDropDown').click(function() {
+        console.log('click1');
+        //
+        //$('.parametersContent').hide();
+        //$('.pTable').hide();
+        //$('#parametersContent').hide();
+        //$('#filterGroupsPane').show();
+        //$('.parametersContainer').parent().hide();
+        $('#accordionGroups').show();
+        $('.pTable').hide();
+        $('.parameterButtons').hide();
+        //$('.filterGroupsPane').show();
+        $('.parametersPane').fadeToggle( "slow", "linear" );
+
+        console.log('click2');
+    });
+    //$('#parametersDropDown').click(function() {if($('.parametersPane').is(":visible")) {$('.parametersPane').fadeToggle( "slow", "linear" );}else{buildParams();}});
+    //$('#parametersDropDown').click(function() {if($('.parametersPane').is(":visible")) {$('.parametersPane').fadeToggle( "slow", "linear" );}else{buildParams();}});
+    //$('#filterGroupsDropDown').click(function() {
+    //    $('.parametersPane').fadeToggle( "slow", "linear" );
+    //});
+
 
     $('#exportDoc').click(function(){myViewer.downloadReport("doc", null, null);});
     $('#exportDocx').click(function(){myViewer.downloadReport("docx", null, null);});
@@ -51,7 +163,6 @@ $(document).ready(function() {
     $('#exportXls').click(function(){myViewer.downloadReport("xls", null, null);});
     $('#exportXlsx').click(function(){myViewer.downloadReport("xlsx", null, null);});
 
-    $('.save').click(function(){myViewer.saveReportDesign();});
 
     function allPages() {
         return "1-"+viewer1.getTotalPageCount();
@@ -68,53 +179,74 @@ $(document).ready(function() {
         executeReport(paramMap);
     });
 
+    /*$('#execute').click(function() {
+        console.log($('.birtParameter'));
+        var t = $('.birtParameter');
+        var paramMap = {};
+        for(i=0; i<t.length;i++) {
+            paramMap [t[i].name] = t[i].value;
+        }
+
+        executeReport(paramMap);
+    });*/
+
     function buildParams() {
+        console.log('buildParams() for ' + reportDesign);
+        console.log('buildParams() for ' + reportNameChange);
         params  = new actuate.Parameter("params");
-        params.setReportName(reportDesign);
+        params.setReportName(reportNameChange);
         params.submit(function() {downloadParams(params);});
     }
 
     function downloadParams(paramsFromViewer) {
-        var allParameters = new Array();
+        try {
 
-        for(i=0; i<paramsFromViewer._._paramImpl._paramDefs.length; i++) {
-            var currentParameter = {};
-            currentParameter = {
-                'cascadingParentName': paramsFromViewer._._paramImpl._paramDefs[i]._._cascadingParentName,
-                'columnType': paramsFromViewer._._paramImpl._paramDefs[i]._._columnType,
-                'currentValue': paramsFromViewer._._paramImpl._paramDefs[i]._._currentValue,
-                'dataType': paramsFromViewer._._paramImpl._paramDefs[i]._._dataType,
-                'defaultValue': paramsFromViewer._._paramImpl._paramDefs[i]._._defaultValue,
-                'displayName': paramsFromViewer._._paramImpl._paramDefs[i]._._displayName,
-                'helpText': paramsFromViewer._._paramImpl._paramDefs[i]._._helpText,
-                'isAdHoc': paramsFromViewer._._paramImpl._paramDefs[i]._._isAdHoc,
-                'isDynamicSelectionList': paramsFromViewer._._paramImpl._paramDefs[i]._._isDynamicSelectionList,
-                'isHidden': paramsFromViewer._._paramImpl._paramDefs[i]._._isHidden,
-                'isPassword': paramsFromViewer._._paramImpl._paramDefs[i]._._isPassword,
-                'isRequired': paramsFromViewer._._paramImpl._paramDefs[i]._._isRequired,
-                'name': paramsFromViewer._._paramImpl._paramDefs[i]._._name
-            };
-            allParameters.push(currentParameter);
+            var allParameters = new Array();
+
+            console.log('downloadParams()');
+            console.log(paramsFromViewer);
+            for(i=0; i<paramsFromViewer._._paramImpl._paramDefs.length; i++) {
+                var currentParameter = {};
+                currentParameter = {
+                    'cascadingParentName': paramsFromViewer._._paramImpl._paramDefs[i]._._cascadingParentName,
+                    'columnType': paramsFromViewer._._paramImpl._paramDefs[i]._._columnType,
+                    'currentValue': paramsFromViewer._._paramImpl._paramDefs[i]._._currentValue,
+                    'dataType': paramsFromViewer._._paramImpl._paramDefs[i]._._dataType,
+                    'defaultValue': paramsFromViewer._._paramImpl._paramDefs[i]._._defaultValue,
+                    'displayName': paramsFromViewer._._paramImpl._paramDefs[i]._._displayName,
+                    'helpText': paramsFromViewer._._paramImpl._paramDefs[i]._._helpText,
+                    'isAdHoc': paramsFromViewer._._paramImpl._paramDefs[i]._._isAdHoc,
+                    'isDynamicSelectionList': paramsFromViewer._._paramImpl._paramDefs[i]._._isDynamicSelectionList,
+                    'isHidden': paramsFromViewer._._paramImpl._paramDefs[i]._._isHidden,
+                    'isPassword': paramsFromViewer._._paramImpl._paramDefs[i]._._isPassword,
+                    'isRequired': paramsFromViewer._._paramImpl._paramDefs[i]._._isRequired,
+                    'name': paramsFromViewer._._paramImpl._paramDefs[i]._._name
+                };
+                allParameters.push(currentParameter);
+            }
+
+            console.log('TEST!!!!!!!');
+            var renderedParameters = new Array();
+            for(i=0; i<allParameters.length; i++) {
+                var currentInput = buildInput(allParameters[i].columnType,allParameters[i].name, allParameters[i].defaultValue);
+                console.log(currentInput);
+                var currentParameters = '<td>'+allParameters[i].displayName+'</td><td>'+currentInput+'</td>';
+                renderedParameters.push(currentParameters);
+
+            }
+
+            var parameterTable = '<table class="pTable"><tr>';
+
+            for(i=0; i<renderedParameters.length; i++) {
+                parameterTable += renderedParameters[i] + '</tr>'
+            }
+
+            parameterTable += '</table>';
+            $('#renderedParameters').html(parameterTable);
+            $('.parametersPane').fadeToggle( "slow", "linear" );
+        }catch(err){
+            console.log(err);
         }
-
-        var renderedParameters = new Array();
-        for(i=0; i<allParameters.length; i++) {
-            var currentInput = buildInput(allParameters[i].columnType,allParameters[i].name, allParameters[i].defaultValue);
-            console.log(currentInput);
-            var currentParameters = '<td>'+allParameters[i].displayName+'</td><td>'+currentInput+'</td>';
-            renderedParameters.push(currentParameters);
-
-        }
-
-        var parameterTable = '<table><tr>';
-
-        for(i=0; i<renderedParameters.length; i++) {
-            parameterTable += renderedParameters[i] + '</tr>'
-        }
-
-        parameterTable += '</table>';
-        $('#renderedParameters').html(parameterTable);
-        $('.parametersPane').fadeToggle( "slow", "linear" );
     }
 
     function buildInput(inputType, inputName, defaultValue) {
@@ -148,14 +280,189 @@ $(document).ready(function() {
         console.log($(document).height());
         viewer1.setHeight($(document).height()-300);
         viewer1.setWidth($(document).width()-200);
+
         viewer1.submit(function() {
             myViewer = viewer1;
             $('#pageN').html(viewer1.getCurrentPageNum());
             $('#pageM').html(viewer1.getTotalPageCount());
             $('#pageOf').html("of");
             myViewer.enableIV();
+            //filterReport(viewer1.getCurrentPageContent());
+            var myTable = viewer1.getCurrentPageContent();
+            getColumnNames();
+
+            if(reportDesign == '/Home/administrator/Medical Report.rptdesign;1') {
+                filterColumnGroup();
+                hideColumnGroup();
+            }
         });
 
-        $('#reportName').html('Monthly Revenue Analysis.rptdesign;1');
+        $('#reportName').html(reportDesign.replace(/^.*[\\\/]/, ''));
+        getColumnNames();
+        //filterReport();
     }
+
+    function getBookmark(bookmarkName) {
+
+    }
+
+    function hideColumnGroup() {
+        var hideTheseColumns = {
+            'mytable': {
+                'columns':['CUSTOMERNUMBER','STATE']
+            }
+        };
+
+        hideColumns(viewer1.getCurrentPageContent(), myViewer);
+    }
+
+    function filterColumnGroup() {
+        var filterTheseColumns = {
+            'mytable': {
+                'CONTACTLASTNAME': {
+                    'condition': actuate.data.Filter.EQ,
+                    'value': 'Young'
+                }
+            }
+        };
+
+        filterColumns(viewer1.getCurrentPageContent(), filterTheseColumns);
+    }
+
+    function updatePageNumbers() {
+        $('#pageN').html(myViewer.getCurrentPageNum());
+        $('#pageM').html(myViewer.getTotalPageCount());
+        $('#pageOf').html("of");
+    }
+
+    function getColumnNames() {
+    }
+
+    function hideColumns(pagecontent, tables) {
+        var tableCount = Object.keys(tables).length;
+
+        for(i=0; i<tableCount; i++) {
+            var currentTableName = Object.keys(tables)[i];
+            var currentTableObject = pagecontent.getTableByBookmark(currentTableName);
+
+            for(j=0; j<tables[currentTableName].columns.length; j++) {
+                console.log(tables[currentTableName].columns[j]);
+                currentTableObject.hideColumn(tables[currentTableName].columns[j]);
+            }
+
+            currentTableObject.submit();
+        }
+    }
+
+    function filterColumns(pagecontent, tables) {
+        var tableArray = new Array();
+        var filtersArray = new Array();
+
+        for(i=0; i<Object.keys(tables).length; i++) {
+            var currentTableName  = Object.keys(tables)[i];
+            var currentTableObject = pagecontent.getTableByBookmark(currentTableName);
+            var filters = new Array();
+            console.log('test');
+
+            for(j=0; j<Object.keys(tables[currentTableName]).length; j++) {
+                var currentColumnName1 = tables[currentTableName][Object.keys(tables[currentTableName])[j]];
+                console.log('$$$$');
+                filterOn = Object.keys(tables[currentTableName])[j];
+                condition = currentColumnName1.condition;
+                value     = currentColumnName1.value;
+
+                var currentFilter = new actuate.data.Filter(filterOn, actuate.data.Filter.EQ, value);
+
+                filters.push(currentFilter);
+            }
+            currentTableObject.setFilters(filters);
+            tableArray.push(currentTableObject);
+        }
+
+        for(i=0; i<tableArray.length; i++) {
+            tableArray[0].submit(function() {console.log('done filtering');updatePageNumbers();});
+        }
+    }
+
+    function htmlbodyHeightUpdate(){
+        var height3 = $( window ).height()
+        var height1 = $('.nav').height()+50
+        height2 = $('.main').height()
+        if(height2 > height3){
+            $('html').height(Math.max(height1,height3,height2)+10);
+            $('body').height(Math.max(height1,height3,height2)+10);
+        }
+        else
+        {
+            $('html').height(Math.max(height1,height3,height2));
+            $('body').height(Math.max(height1,height3,height2));
+        }
+
+    }
+
+    $('#chkFirstName').click(function() {
+        if($('#chkFirstName').is(":checked")) {
+            $('#firstName').show();
+        }else{
+            $('#firstName').hide();
+        }
+
+    });
+
+    $('#chkLastName').click(function() {
+        if($('#chkLastName').is(":checked")) {
+            $('#lastName').show();
+        }else{
+            $('#lastName').hide();
+        }
+    });
+
+    $('#chkCity').click(function() {
+        if($('#chkCity').is(":checked")) {
+            $('#city').show();
+        }else{
+            $('#city').hide();
+        }
+    });
+
+    $('#chkState').click(function() {
+        if($('#chkState').is(":checked")) {
+            $('state').show();
+        }else{
+            $('#state').hide();
+        }
+    });
+
+    $('#filterFilter').click(function() {
+
+        var filterTheseColumns = {
+            'mytable': {
+                'CONTACTLASTNAME': {
+                    'condition': actuate.data.Filter.EQ,
+                    'value': 'Young'
+                }
+            }
+        };
+
+        filterColumns(viewer1.getCurrentPageContent(), filterTheseColumns);
+    });
+
+    $('#filterHide').click(function() {
+        var hideTheseColumns = {
+            'mytable': {
+                'columns':['CUSTOMERNUMBER','STATE']
+            }
+        };
+
+        hideColumns(viewer1.getCurrentPageContent(), myViewer);
+    })
+
+    htmlbodyHeightUpdate()
+    $( window ).resize(function() {
+        htmlbodyHeightUpdate()
+    });
+    $( window ).scroll(function() {
+        height2 = $('.main').height()
+        htmlbodyHeightUpdate()
+    });
 });

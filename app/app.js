@@ -3,6 +3,9 @@
 // Declare app level module which depends on views, and components
 angular.module('reportFilters', [
   'ngRoute',
+  'reportFilters.filterGroup1',
+  'reportFilters.filterGroup2',
+  'reportFilters.filterGroups',
   'reportFilters.footer',
   'reportFilters.header',
   'reportFilters.main',
