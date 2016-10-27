@@ -1,15 +1,4 @@
 $(document).ready(function() {
-/*    var ihub         = 'http://ihub.demoimage.com:8700/iportal/';
-    var myViewer     = null;
-    var username     = 'Administrator';
-    var password     = null;
-    var volume       = 'Default Volume';
-    var repoType     = 'Enterprise';
-    var reqOps       = null;
-    var reportDesign = '/Home/administrator/Medical Report.rptdesign;1';
-    var bookmarkName = 'mytable';
-    var columnNames  = new Array();*/
-
     var dialogOpen = $('#dialogOpen').dialog({autoOpen: false, zIndex: 10000});
     var dialogSave = $('#dialogSave').dialog({autoOpen: false, zIndex: 10000});
     var dialogHelp = $('#dialogHelp').dialog({autoOpen: false, zIndex: 10000});
@@ -75,20 +64,6 @@ $(document).ready(function() {
         dialogHelp.dialog('open');
     }
 
-    function openExportDropDown() {
-
-    }
-
-    //$('.save').click(function(){myViewer.saveReportDesign();});
-
-    //$('#save').click(function(){
-
-    //});
-
-    //$('#help').click(function() {
-
-    //});
-
     $(window).on('resize', function() {
         var footerPosition = $('.footer').position();
 
@@ -130,16 +105,6 @@ $(document).ready(function() {
         dialogOpen.dialog('close');
         console.log(reportNameChange);
     });
-    /*$('#btnOpenReport').click(function() {
-        //buildParams();
-        reportDesign = reportNameChange;
-        console.log('#@#@#@#');
-        buildParams();
-        executeReport();
-        dialogOpen.dialog('close');
-       console.log(reportNameChange);
-       console.log(reportNameChange);
-    });*/
 
     function getItems(resultDef, pane) {
         console.log('getting items');
@@ -164,37 +129,11 @@ $(document).ready(function() {
         dialogOpen.dialog('open');
     });
 
-    //$("#openReport").click(function(){
-        //alert('test');
-        //$("#dialog").dialog("open");
-        /*
-        console.log($('.birtParameter'));
-        var t = $('.birtParameter');
-        var paramMap = {};
-        for(i=0; i<t.length;i++) {
-            paramMap [t[i].name] = t[i].value;
-        }*/
+    $('#parametersDropDown').click(function() {if($('.parametersPane').is(":visible")) {$('.parametersPane').fadeToggle( "slow", "linear" );}else{buildParams();}});
 
-        //executeReport(paramMap);
-    //});
-
-
-
-    //$('#parametersDropDown').click(function() {if($('.parametersPane').is(":visible")) {$('.parametersPane').fadeToggle( "slow", "linear" );}else{buildParams();}});
-
-    //$('#parametersDropDown').click(function() {
-
-        //buildParams();
-    //});
-
-//    $('#filterGroupsDropDown').click(function() {
-
-//    });
-    //$('#parametersDropDown').click(function() {if($('.parametersPane').is(":visible")) {$('.parametersPane').fadeToggle( "slow", "linear" );}else{buildParams();}});
-    //$('#parametersDropDown').click(function() {if($('.parametersPane').is(":visible")) {$('.parametersPane').fadeToggle( "slow", "linear" );}else{buildParams();}});
-    //$('#filterGroupsDropDown').click(function() {
-    //    $('.parametersPane').fadeToggle( "slow", "linear" );
-    //});
+    $('#filterGroupsDropDown').click(function() {
+        $('.parametersPane').fadeToggle( "slow", "linear" );
+    });
 
 
     $('#exportDoc').click(function(){myViewer.downloadReport("doc", null, null);});
@@ -222,17 +161,6 @@ $(document).ready(function() {
 
         executeReport(paramMap);
     });
-
-    /*$('#execute').click(function() {
-        console.log($('.birtParameter'));
-        var t = $('.birtParameter');
-        var paramMap = {};
-        for(i=0; i<t.length;i++) {
-            paramMap [t[i].name] = t[i].value;
-        }
-
-        executeReport(paramMap);
-    });*/
 
     function buildParams() {
         console.log('buildParams() for ' + reportDesign);
