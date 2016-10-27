@@ -32,20 +32,9 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-
-  <div id="dialogOpen" title="Open Report">
-    <div class="viewerDialogs" id="explorerpane"></div>
-    <button class="btn btn-success" id="btnOpenReport">Open</button><button class="btn btn-success execute" id="cancel">Cancel</button>
-  </div>
-
-
-  <div id="dialogHelp" title="Help">
-    <p>AngularBIRT is an example interactive viewer for BIRT and InformationHub 16.  This example code is not meant for
-    production use and is merely a way to show integration into your application using OpenText InformationHub's JavaScript
-    API and Angular.</p>
-    <button class="btn btn-success" id="btnHelpOK">OK</button><button class="btn btn-success execute" id="btnHelpCancel">Cancel</button>
-  </div>
   <div ng-include="'views/header/header.html'"></div>
+  <div ng-include="'views/helpDialog/helpDialog.html'"></div>
+  <div ng-include="'views/openDialog/openDialog.html'"></div>
   <div class="social" ng-include="'views/social/social.html'"></div>
   <div class="parametersPane" ng-include="'views/parameterDivider/parameterDivider.html'"></div>
   <div class="parametersPane" ng-include="'views/parameters/parameters.html'"></div>
@@ -68,10 +57,11 @@
   <script src="views/filterGroup2/filterGroup2.js"></script>
   <script src="views/filterGroups/filterGroups.js"></script>
   <script src="views/header/header.js"></script>
+  <script src="views/helpDialog/helpDialog.js"></script>
   <script src="views/footer/footer.js"></script>
   <script src="views/parameterDivider/parameterDivider.js"></script>
   <script src="views/main/main.js"></script>
-  <script src="views/open/open.js"></script>
+  <script src="views/openDialog/openDialog.js"></script>
   <script src="views/parameters/parameters.js"></script>
   <script src="views/viewReport/viewReport.js"></script>
   <script src="views/saveDialog/saveDialog.js"></script>
