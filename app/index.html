@@ -38,11 +38,6 @@
     <button class="btn btn-success" id="btnOpenReport">Open</button><button class="btn btn-success execute" id="cancel">Cancel</button>
   </div>
 
-  <div id="dialogSave" title="Save Report">
-    <div class="viewerDialogs" id="explorerpane2"></div><br/>
-    <input type="text" class="form-control" id="saveInput"><br/>
-    <button class="btn btn-success" id="btnOpenReport2">Open</button><button class="btn btn-success execute" id="cancel2">Cancel</button>
-  </div>
 
   <div id="dialogHelp" title="Help">
     <p>AngularBIRT is an example interactive viewer for BIRT and InformationHub 16.  This example code is not meant for
@@ -54,6 +49,7 @@
   <div class="social" ng-include="'views/social/social.html'"></div>
   <div class="parametersPane" ng-include="'views/parameterDivider/parameterDivider.html'"></div>
   <div class="parametersPane" ng-include="'views/parameters/parameters.html'"></div>
+  <div class="saveView" ng-include="'views/saveDialog/saveDialog.html'"></div>
   <div class="parametersPane" ng-include="'views/filterGroups/filterGroups.html'"></div>
   <div ng-view class="mainApp">
   </div>
