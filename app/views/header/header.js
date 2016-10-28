@@ -29,6 +29,7 @@ angular.module('AngularBIRT.header', ['ngRoute'])
         $scope.parametersCancel = {};
         $scope.parametersToggle = {};
         $scope.saveDialog = {};
+        $scope.savedFilters = {};
 
         $scope.xls.doExport = function(){window.myViewer.downloadReport("xls", null, null);};
         $scope.xlsx.doExport = function(){window.myViewer.downloadReport("xlsx", null, null);};
@@ -47,4 +48,5 @@ angular.module('AngularBIRT.header', ['ngRoute'])
         $scope.moveBackwardAll.doMove = function(){window.moveBackwardAll();}
         $scope.parametersToggle.doToggle = function(){window.toggleParameters();}
         $scope.saveDialog.doOpen = function() {window.openSaveFilterDialog();}
+        $scope.savedFilters.doOpen = function() {window.savedFilters.dialog('open');}
     });

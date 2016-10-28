@@ -18,3 +18,4 @@ window.restpass        = '';
 window.filtersurl      = 'http://ihub.demoimage.com:8000/api/v2/files/620200000100/download?base64=false';
 window.filters         = {};
 window.filesurl        = 'http://ihub.demoimage.com:8000/api/v2/files';
+window.savedFilters    = null;

@@ -13,6 +13,7 @@ angular.module('AngularBIRT', [
   'AngularBIRT.openDialog',
   'AngularBIRT.parameterDivider',
   'AngularBIRT.parameters',
+  'AngularBIRT.savedFilters',
   'AngularBIRT.saveDialog',
   'AngularBIRT.social',
   'AngularBIRT.viewReport',

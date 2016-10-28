@@ -10,9 +10,10 @@ $(document).ready(function() {
 
     actuate.initialize(ihub, reqOps == undefined ? null : reqOps, username, password, null);
 
-    dialogOpen = $('#dialogOpen').dialog({autoOpen: false, zIndex: 10000});
-    dialogSave = $('#dialogSave').dialog({autoOpen: false, zIndex: 10000});
-    dialogHelp = $('#dialogHelp').dialog({autoOpen: false, zIndex: 10000});
+    dialogOpen   = $('#dialogOpen').dialog({autoOpen: false, zIndex: 10000});
+    dialogSave   = $('#dialogSave').dialog({autoOpen: false, zIndex: 10000});
+    dialogHelp   = $('#dialogHelp').dialog({autoOpen: false, zIndex: 10000});
+    savedFilters = $('#dialogSavedFilters').dialog({autoOpen: false, zIndex: 10000});
 
     accordionGroups = $('#accordionGroups').accordion();
 
@@ -77,6 +78,15 @@ $(document).ready(function() {
                 console.log(response);
                 filters = JSON.parse(response);
                 console.log(filters);
+                console.log(filters.mytable.filtername);
+
+                //for(filters)
+                for(i=0; i<filters.mytable.filter.length; i++) {
+                    filterTemplate = '<label>'+filters.mytable.filter[i].filtername+'</label><div class="checkbox"><label><input type="checkbox" value="">Patient Number</label><input type="text" value="'+filters.mytable.filter[i].value[0]+'"class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Patient Last Name</label><input value="'+filters.mytable.filter[i].value[1]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Patient First Name</label><input value="'+filters.mytable.filter[i].value[2]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Address</label><input value="'+filters.mytable.filter[i].value[3]+'"type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">City</label><input value="'+filters.mytable.filter[i].value[4]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">State</label><input value="'+filters.mytable.filter[i].value[5]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Appointment Date</label><input value="'+filters.mytable.filter[i].value[6]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Diagnosis</label><input value="'+filters.mytable.filter[i].value[7]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Doctor Comments</label><input value="'+filters.mytable.filter[i].value[8]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Rx</label><input value="'+filters.mytable.filter[i].value[9]+'" type="text" class="form-control" ></div>';
+                    $('#savedFiltersOutput').append(filterTemplate);
+                }
+
+
             },
             error: function(xhr) {
                 //Do Something to handle error
