@@ -4,9 +4,6 @@
 angular.module('AngularBIRT', [
   'ngRoute',
   'ngSanitize',
-  'AngularBIRT.filterGroup1',
-  'AngularBIRT.filterGroup2',
-  'AngularBIRT.filterGroups',
   'AngularBIRT.footer',
   'AngularBIRT.header',
   'AngularBIRT.helpDialog',
