@@ -32,7 +32,7 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-  <div ng-include="'views/header/header.html'"></div>
+  <!--<div ng-include="'views/header/header.html'"></div>
   <div ng-include="'views/helpDialog/helpDialog.html'"></div>
   <div ng-include="'views/openDialog/openDialog.html'"></div>
   <div class="social" ng-include="'views/social/social.html'"></div>
@@ -40,7 +40,17 @@
   <div class="parametersPane" ng-include="'views/parameters/parameters.html'"></div>
   <div class="saveView" ng-include="'views/saveDialog/saveDialog.html'"></div>
   <div class="parametersPane" ng-include="'views/filterGroups/filterGroups.html'"></div>
-  <div ng-include="'views/footer/footer.html'"></div>
+  <div ng-include="'views/footer/footer.html'"></div>-->
+
+  <div birt-header></div>
+  <div birt-footer></div>
+  <div help-dialog></div>
+  <div birt-main></div>
+  <div open-dialog></div>
+  <div birt-parameters></div>
+  <div save-dialog></div>
+  <div birt-social></div>
+  <div view-report></div>
   <div ng-view class="mainApp">
   </div>
 
@@ -51,11 +61,23 @@
   -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="resources/angular-sanitize/js/1.2.20/angular-sanitize.min.js"></script>
   <script src="app.js"></script>
 
   <script src="views/filterGroup1/filterGroup1.js"></script>
   <script src="views/filterGroup2/filterGroup2.js"></script>
   <script src="views/filterGroups/filterGroups.js"></script>
+  <script src="directives/birtFooter/js/0.0.1/birtFooter.js"></script>
+  <script src="directives/birtHeader/js/0.0.1/birtHeader.js"></script>
+  <script src="directives/helpDialog/js/0.0.1/helpDialog.js"></script>
+  <script src="directives/main/js/0.0.1/main.js"></script>
+  <script src="directives/openDialog/js/0.0.1/openDialog.js"></script>
+  <script src="directives/parameters/js/0.0.1/parameters.js"></script>
+  <script src="directives/saveDialog/js/0.0.1/saveDialog.js"></script>
+  <script src="directives/social/js/0.0.1/social.js"></script>
+  <script src="directives/viewReport/js/0.0.1/viewReport.js"></script>
+  <script src="directives/compileHtml/js/0.0.1/compileHtml.js"></script>
+  <script src="directives/ngTest.js"></script>
   <script src="views/header/header.js"></script>
   <script src="views/helpDialog/helpDialog.js"></script>
   <script src="views/footer/footer.js"></script>

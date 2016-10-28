@@ -12,20 +12,15 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="dropdown">
+                <li class="dropdown" ng-controller="HeaderCtrl" as headerItems>
                     <a href="#" class="dropdown-toggle toolbarButtons parametersDropDown" id="exportDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a ng-click="xls.doExport($event)" class="exportOption" href="" id="exportXls"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel (XLS)</a></li>
-                        <li><a class="exportOption" href="" id="exportXlsx"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel (XLSX)</a></li>
-                        <li><a class="exportOption" href="" id="exportPdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a></li>
-                        <li><a class="exportOption" href="" id="exportPs"><i class="fa fa-paragraph" aria-hidden="true"></i> PostScript (PS)</a></li>
-                        <li><a class="exportOption" href="" id="exportPpt"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i> PowerPoint (PPT)</a></li>
-                        <li><a class="exportOption" href="" id="exportPptx"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i> PowerPoint (PPTX)</a></li>
-                        <li><a class="exportOption" href="" id="exportDoc"><i class="fa fa-file-word-o" aria-hidden="true"></i> Word (DOC)</a></li>
-                        <li><a class="exportOption" href="" id="exportDocx"><i class="fa fa-file-word-o" aria-hidden="true"></i> Word (DOCX)</a></li>
-                        <li><a class="exportOption" href="" id="exportXhtml"><i class="fa fa-internet-explorer" aria-hidden="true"></i> XHTML</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#"><i class="fa fa-print toPrinter" aria-hidden="true"></i> Print</a></li>
+                    <ul class="dropdown-menu" ng-controller="HeaderCtrl as tester">
+                        <li ng-repeat="link in tester.exportOptions"
+                            compile-html="link">
+                        </li>
+                        <!--<li><a ng-click="xls.doExport($event)" class="exportOption" href="" id="exportXls"><i class="fa fa-file-excel-o" aria-hidden="true"></i> {{tester.XlsOption}}</a></li>-->
+                        <!--<li><a ng-click="xls.doExport($event)" class="exportOption" href="" id="exportXls"><i class="fa fa-file-excel-o" aria-hidden="true"></i> {{HeaderCtrl.XlsOption}}</a></li>-->
+
                     </ul>
                 </li>
                 <li><a ng-click="openDialog.doOpen($event)" href="" class="toolbarButtons" id="openReport"><medium class="text-muted">Open Report</medium></a></li>

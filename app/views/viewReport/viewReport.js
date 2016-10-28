@@ -9,6 +9,13 @@ angular.module('AngularBIRT.viewReport', ['ngRoute'])
         });
     }])
 
-    .controller('ViewReportCtrl', [function() {
+    .controller('ViewReportCtrl', function($scope) {
+        var main = this;
+        main.links = [
+            "<li><a href='http://google.com'>Google</a></li>",
+            "<a href='http://odetocode.com'>OdeToCode</a>",
+            "<a href='http://twitter.com'>Twitter</a>",
+        ];
 
-    }]);
+        main.Xls = 'test';
+    });
