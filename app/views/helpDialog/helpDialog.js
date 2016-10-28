@@ -9,6 +9,9 @@ angular.module('AngularBIRT.helpDialog', ['ngRoute'])
         });
     }])
 
-    .controller('HelpDialogCtrl', [function() {
-
-    }]);
+    .controller('HelpDialogCtrl', function($scope) {
+        $scope.myData = {};
+        $scope.myData.doClick = function() {
+            alert(window.dialogHelp.dialog('close'));
+        }
+    });

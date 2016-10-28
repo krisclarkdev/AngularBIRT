@@ -4,6 +4,7 @@
 .accordianValues{ height: 90px; }
 .socialNetworks { z-index: 1000 !important;}
 .filterText { display: none; }
+.navbar-fixed-top { z-index: 1000 !important;}
 
 .viewerDialogs {
     height: 350px;

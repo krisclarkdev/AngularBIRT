@@ -5,18 +5,18 @@
             </form>
             <br/>
             <div id="parametersContent">
-                <button class="btn btn-success parameterButtons" id="execute">Execute</button><button class="btn btn-success execute parameterButtons" id="cancel">Cancel</button>
+                <button class="btn btn-success parameterButtons" id="execute">Execute</button><button class="btn btn-success execute parameterButtons" id="cancelParameters">Cancel</button>
                 <div id="accordionGroups">
                     <h3><label><input type="checkbox" value="true" checked> Filter Patient Informaition <button class="btn btn-success" id="filterFilter">Filter</button></label></h3>
                     <div class="accordianValues">
                         <p>
-                            <label><input type="checkbox" id="chkLastName" checked> Last name</label><br/>
+                            <label><input class="filterSelector" type="checkbox" id="chkLastName" checked> Last name</label><br/>
                             <input class="filterText" value="Young" type="text" name="LASTNAME" class="form-control" id="lastName" checked><br/>
-                            <label><input type="checkbox" value="" id="chkFirstName"> First name</label><br>
+                            <label><input class="filterSelector" type="checkbox" value="" id="chkFirstName"> First name</label><br>
                             <input class="filterText" type="text" name="FIRSTNAME" class="form-control" id="firstName"><br/>
-                            <label><input type="checkbox" value="" id="chkCity"> City</label><br/>
+                            <label><input class="filterSelector" type="checkbox" value="" id="chkCity"> City</label><br/>
                             <input class="filterText" type="text" name="CITY" class="form-control" id="city"><br/>
-                            <label><input type="checkbox" value="" id="chkState"> State</label><br/>
+                            <label><input class="filterSelector" type="checkbox" value="" id="chkState"> State</label><br/>
                             <input class="filterText" type="text" name="STATE" class="form-control" id="state"><br/>
                         </p>
                     </div>

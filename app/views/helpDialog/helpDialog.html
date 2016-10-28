@@ -1,5 +1,5 @@
-<div id="dialogHelp" class="toolbarDialogButton" title="Help">
-    <p>AngularBIRT is an example interactive viewer for BIRT and InformationHub 16.  This example code is not meant for
+<div data-dialog id="dialogHelp" class="toolbarDialogButton" ng-controller="HelpDialogCtrl" title="Help">
+    <p ng-click="myData.doClick($event)">AngularBIRT is an example interactive viewer for BIRT and InformationHub 16.  This example code is not meant for
         production use and is merely a way to show integration into your application using OpenText InformationHub's JavaScript
         API and Angular.</p>
     <button class="btn btn-success" id="btnHelpOK">OK</button><button class="btn btn-success execute" id="btnHelpCancel">Cancel</button>

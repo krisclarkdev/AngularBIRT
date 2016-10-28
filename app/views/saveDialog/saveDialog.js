@@ -9,6 +9,8 @@ angular.module('AngularBIRT.saveDialog', ['ngRoute'])
         });
     }])
 
-    .controller('SaveDialogCtrl', [function() {
+    .controller('SaveDialogCtrl', function($scope) {
 
-    }]);
+
+
+    });
