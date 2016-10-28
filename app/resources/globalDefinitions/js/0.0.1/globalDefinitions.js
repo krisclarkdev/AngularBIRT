@@ -1,3 +1,5 @@
+window.savedFilters    = null;
+window.openFilters     = null;
 window.ihub         = 'http://ihub.demoimage.com:8700/iportal/';
 window.myViewer     = null;
 window.username     = 'Administrator';
@@ -18,4 +20,3 @@ window.restpass        = '';
 window.filtersurl      = 'http://ihub.demoimage.com:8000/api/v2/files/620200000100/download?base64=false';
 window.filters         = {};
 window.filesurl        = 'http://ihub.demoimage.com:8000/api/v2/files';
-window.savedFilters    = null;

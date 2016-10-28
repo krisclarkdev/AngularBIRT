@@ -13,7 +13,12 @@ $(document).ready(function() {
     dialogOpen   = $('#dialogOpen').dialog({autoOpen: false, zIndex: 10000});
     dialogSave   = $('#dialogSave').dialog({autoOpen: false, zIndex: 10000});
     dialogHelp   = $('#dialogHelp').dialog({autoOpen: false, zIndex: 10000});
-    savedFilters = $('#dialogSavedFilters').dialog({autoOpen: false, zIndex: 10000});
+    savedFilters = $('#dialogSavedFilters').dialog({autoOpen: false, zIndex: 10000, maxHeight: 450, minHeight: 450});
+    //$('#accordion').accordion();
+
+    var footerPosition = $('.footer').position();
+
+    $('#reportViewer').width($(document).width()-200)
 
     accordionGroups = $('#accordionGroups').accordion();
 
@@ -82,9 +87,11 @@ $(document).ready(function() {
 
                 //for(filters)
                 for(i=0; i<filters.mytable.filter.length; i++) {
-                    filterTemplate = '<label>'+filters.mytable.filter[i].filtername+'</label><div class="checkbox"><label><input type="checkbox" value="">Patient Number</label><input type="text" value="'+filters.mytable.filter[i].value[0]+'"class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Patient Last Name</label><input value="'+filters.mytable.filter[i].value[1]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Patient First Name</label><input value="'+filters.mytable.filter[i].value[2]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Address</label><input value="'+filters.mytable.filter[i].value[3]+'"type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">City</label><input value="'+filters.mytable.filter[i].value[4]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">State</label><input value="'+filters.mytable.filter[i].value[5]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Appointment Date</label><input value="'+filters.mytable.filter[i].value[6]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Diagnosis</label><input value="'+filters.mytable.filter[i].value[7]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Doctor Comments</label><input value="'+filters.mytable.filter[i].value[8]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Rx</label><input value="'+filters.mytable.filter[i].value[9]+'" type="text" class="form-control" ></div>';
+                    filterTemplate = '<h3>'+filters.mytable.filter[i].filtername+'</h3><div><div class="checkbox"><label><input type="checkbox" value="">Patient Number</label><input type="text" value="'+filters.mytable.filter[i].value[0]+'"class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Patient Last Name</label><input value="'+filters.mytable.filter[i].value[1]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Patient First Name</label><input value="'+filters.mytable.filter[i].value[2]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Address</label><input value="'+filters.mytable.filter[i].value[3]+'"type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">City</label><input value="'+filters.mytable.filter[i].value[4]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">State</label><input value="'+filters.mytable.filter[i].value[5]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Appointment Date</label><input value="'+filters.mytable.filter[i].value[6]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Diagnosis</label><input value="'+filters.mytable.filter[i].value[7]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Doctor Comments</label><input value="'+filters.mytable.filter[i].value[8]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Rx</label><input value="'+filters.mytable.filter[i].value[9]+'" type="text" class="form-control" ></div></div>';
+                    //filterTemplate += filterTemplate;
                     $('#savedFiltersOutput').append(filterTemplate);
                 }
+                $('#savedFiltersOutput').accordion({heightStyle: "fill"});
 
 
             },
@@ -203,6 +210,9 @@ $(document).ready(function() {
         //dialogOpen.dialog('open');
     }
 
+    window.openFilters = function() {
+        savedFilters.dialog('open');
+    }
 
 
     window.openSaveFilterDialog = function() {
@@ -222,7 +232,7 @@ $(document).ready(function() {
     $(window).on('resize', function() {
         var footerPosition = $('.footer').position();
 
-        myViewer.setHeight(footerPosition.top - 30);
+        myViewer.setHeight($(window).height() - 30);
         myViewer.setWidth($(document).width()-200);
         myViewer.submit();
     });
@@ -348,9 +358,8 @@ $(document).ready(function() {
         options.enableToolBar(false);
         viewer1.setUIOptions(options);
         console.log($(document).height());
-        viewer1.setHeight($(document).height()-300);
+        viewer1.setHeight($(document).height()-130);
         viewer1.setWidth($(document).width()-200);
-
         viewer1.submit(function() {
             myViewer = viewer1;
             $('#pageN').html(viewer1.getCurrentPageNum());

@@ -26,7 +26,7 @@ angular.module('AngularBIRT.header', ['ngRoute', 'ngSanitize'])
 
         header.exportOptions = [
             '<a ng-click="xls.doExport()" class="exportOption" href="" id="exportXls"><i class="fa fa-file-excel-o" aria-hidden="true"></i> XLS</a>',
-            '<a ng-click="xlsx.doExport" href="" id="exportXlsx"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel (XLSX)</a>',
+            '<a ng-click="xlsx.doExport()" href="" id="exportXlsx"><i class="fa fa-file-excel-o" aria-hidden="true"></i> Excel (XLSX)</a>',
             '<a ng-click="pdf.doExport()" href="" id="exportPdf"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> PDF</a>',
             '<a ng-click="ps.doExport()" href="" id="exportPs"><i class="fa fa-paragraph" aria-hidden="true"></i> PostScript (PS)</a>',
             '<a ng-click="ppt.doExport()" href="" id="exportPpt"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i> PowerPoint (PPT)</a>',
@@ -69,6 +69,8 @@ angular.module('AngularBIRT.header', ['ngRoute', 'ngSanitize'])
         $scope.parametersCancel = {};
         $scope.parametersToggle = {};
         $scope.saveDialog = {};
+        $scope.savedFilters = {};
+        $scope.openFilters = {};
 
         $scope.xls.doExport = function(){console.log('yup');window.myViewer.downloadReport("xls", null, null);};
         $scope.xlsx.doExport = function(){window.myViewer.downloadReport("xlsx", null, null);};
@@ -87,6 +89,8 @@ angular.module('AngularBIRT.header', ['ngRoute', 'ngSanitize'])
         $scope.moveBackwardAll.doMove = function(){window.moveBackwardAll();}
         $scope.parametersToggle.doToggle = function(){window.toggleParameters();}
         $scope.saveDialog.doOpen = function() {window.openSaveFilterDialog();}
+        $scope.savedFilters.doOpen = function() {console.log('open saved filter');window.savedFilters.dialog('open');}
+        $scope.openFilters.doOpen = function() {console.log('open filters');}
 
     })
 ;

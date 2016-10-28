@@ -5,6 +5,9 @@
 .socialNetworks { z-index: 1000 !important;}
 .filterText { display: none; }
 .navbar-fixed-top { z-index: 1000 !important;}
+#reportViewer{ padding-left: 50px; height: 100%;}
+
+.ui-accordion-content { min-height: 300px;}
 
 .viewerDialogs {
     height: 350px;
