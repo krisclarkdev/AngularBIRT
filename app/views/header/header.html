@@ -28,11 +28,17 @@
                         <li><a href="#"><i class="fa fa-print toPrinter" aria-hidden="true"></i> Print</a></li>
                     </ul>
                 </li>
-                <li class="active"><a class="toolbarButtons" href="#"><medium class="text-muted">Home</medium></a></li>
                 <li><a ng-click="openDialog.doOpen($event)" href="" class="toolbarButtons" id="openReport"><medium class="text-muted">Open Report</medium></a></li>
-                <li><a href="" ng-click="saveDialog.doOpen()" class="toolbarButtons" id="save" href=""><medium class="text-muted">Save Filter</medium></a></li>
+                <li><a href="" ng-click="saveDialog.doOpen()" class="toolbarButtons" id="save" href=""><medium class="text-muted">Save</medium></a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle toolbarButtons parametersDropDown" id="filterGroupsDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><medium class="text-muted">Filters <span class="caret"></span></medium></a>
+                    <!--<a href="#" class="dropdown-toggle toolbarButtons parametersDropDown" id="filterGroupsDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><medium class="text-muted">Filters <span class="caret"></span></medium></a>-->
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle parametersDropDown" id="parametersDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><medium class="text-muted">Filters <span class="caret"></span></medium></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                    </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle parametersDropDown" id="parametersDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><medium class="text-muted">Parameters <span class="caret"></span></medium></a>

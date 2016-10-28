@@ -7,6 +7,7 @@ $(document).ready(function() {
     reqOps.setRepositoryType(repoType);
     reqOps.setVolume(volume);
     reqOps.setCustomParameters({});
+
     actuate.initialize(ihub, reqOps == undefined ? null : reqOps, username, password, null);
 
     dialogOpen = $('#dialogOpen').dialog({autoOpen: false, zIndex: 10000});
@@ -15,7 +16,77 @@ $(document).ready(function() {
 
     accordionGroups = $('#accordionGroups').accordion();
 
-    $('#accordionGroups').hide();
+    function login() {
+        var jqxhr = $.post({
+            url: window.resturl,
+            data: {
+                'username': window.restuser,
+                'password': window.restpass
+            },
+            success: function(data, status, jqxhr) {
+                console.log('1');
+            },
+            dataType: 'json'
+        });
+
+        jqxhr.always(function(data) {
+            console.log(data.authToken);
+            getFileID(data.authToken);
+            //downloadFilters(data.authToken);
+        });
+    }
+
+    function getFileID(authid) {
+        console.log(authid);
+        var jqxhr = $.ajax({
+            url: window.filesurl,
+            url: window.filesurl,
+            type: "get", //send it through get method
+            data:{'AuthToken': authid},
+            beforeSend: function(xhr){xhr.setRequestHeader('AuthToken', authid);},
+            success: function(response) {
+                //Do Something
+                test = response.itemList.file;
+                console.log();
+
+                for(i=0; i<test.length; i++) {
+                    if(test[i].name == 'filters.json') {
+                        downloadFilters(authid, test[i].id);
+                    }
+                }
+            },
+            error: function(xhr) {
+                //Do Something to handle error
+                console.log(xhr);
+            }
+        });
+    }
+
+    login();
+
+    //52020000010
+    function downloadFilters(authid, id) {
+        console.log(authid);
+        var jqxhr = $.ajax({
+            url: 'http://ihub.demoimage.com:8000/api/v2/files/'+id+'/download?base64=false',
+            type: "get", //send it through get method
+            data:{'AuthToken': authid},
+            beforeSend: function(xhr){xhr.setRequestHeader('AuthToken', authid);},
+            success: function(response) {
+                //Do Something
+                console.log(response);
+                filters = JSON.parse(response);
+                console.log(filters);
+            },
+            error: function(xhr) {
+                //Do Something to handle error
+                console.log(xhr);
+            }
+        });
+    }
+
+
+    //$('#accordionGroups').hide();
 
     $('#accordionGroups input[type="checkbox"]').click(function(e) {
         e.stopPropagation();
@@ -45,18 +116,21 @@ $(document).ready(function() {
         myViewer.gotoPage(1);
     }
 
+    window.runReport = function() {
+        console.log($('.birtParameter'));
+        var t = $('.birtParameter');
+        var paramMap = {};
+        for(i=0; i<t.length;i++) {
+            paramMap [t[i].name] = t[i].value;
+        }
+
+        executeReport(paramMap);
+    }
+
     $('button').click(function() {
         var elementID = $(this).attr('id');
 
         if(elementID = "execute") {
-            console.log($('.birtParameter'));
-            var t = $('.birtParameter');
-            var paramMap = {};
-            for(i=0; i<t.length;i++) {
-                paramMap [t[i].name] = t[i].value;
-            }
-
-            executeReport(paramMap);
         }else if(elementID == 'cancelDialogOpen') {
             dialogOpen.dialog('close');
         }else if(elementID == 'cancelParameters') {

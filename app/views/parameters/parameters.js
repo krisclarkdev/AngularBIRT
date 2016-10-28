@@ -9,6 +9,5 @@ angular.module('AngularBIRT.parameters', ['ngRoute'])
         });
     }])
 
-    .controller('ParametersCtrl', [function() {
-
-    }]);
+    .controller('ParametersCtrl', function($scope) {
+    });
