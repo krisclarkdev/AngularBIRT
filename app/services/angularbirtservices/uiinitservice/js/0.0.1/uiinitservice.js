@@ -12,6 +12,10 @@ app.service('angularBirtUiInitService', function($http, $q) {
         });
     }
 
+    var moveForward = function() {
+
+    }
+
     function paginationConstructor() {
         window.moveForwardOne = function() {
             var next = myViewer.getCurrentPageNum() + 1;

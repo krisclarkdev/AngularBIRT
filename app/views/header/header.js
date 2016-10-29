@@ -8,7 +8,7 @@ angular.module('AngularBIRT.header', ['ngRoute', 'ngSanitize'])
         });
     }])
 
-    .controller('HeaderCtrl', function($sce, $log, $scope) {
+    .controller('HeaderCtrl', function($sce, $log, $scope, paginationService) {
         var header = this;
 
         header.exportDropDown = '<li class="dropdown"><a href="#" class="dropdown-toggle toolbarButtons parametersDropDown" id="exportDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></a><ul class="dropdown-menu" ng-controller="HeaderCtrl as tester"><li ng-repeat="link in tester.exportOptions" compile-html="link"></li></ul></li>';
@@ -80,10 +80,10 @@ angular.module('AngularBIRT.header', ['ngRoute', 'ngSanitize'])
         $scope.xhtml.doExport = function(){window.myViewer.downloadReport("xhtml", null, null);};
         $scope.helpDialog.doOpen = function(){window.dialogHelp.dialog('open');}
         $scope.openDialog.doOpen = function(){window.getOpenItems(); window.dialogOpen.dialog('open');}
-        $scope.moveForwardOne.doMove = function(){window.moveForwardOne();}
-        $scope.moveForwardAll.doMove = function(){window.moveForwardAll();}
-        $scope.moveBackwardOne.doMove = function(){window.moveBackwardOne();}
-        $scope.moveBackwardAll.doMove = function(){window.moveBackwardAll();}
+        $scope.moveForwardOne.doMove = function(){paginationService.doMoveForward();}
+        $scope.moveForwardAll.doMove = function(){paginationService.doMoveLastPage();}
+        $scope.moveBackwardOne.doMove = function(){paginationService.doMoveBackward();}
+        $scope.moveBackwardAll.doMove = function(){paginationService.doMoveLastPage();}
         $scope.parametersToggle.doToggle = function(){window.toggleParameters();}
         $scope.saveDialog.doOpen = function() {window.openSaveFilterDialog();}
         $scope.savedFilters.doOpen = function() {$('#savedFiltersOutput').append(window.savedFiltersTemplate);window.savedFilters.dialog('open');}
