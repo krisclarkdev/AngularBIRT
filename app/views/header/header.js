@@ -11,9 +11,6 @@ angular.module('AngularBIRT.header', ['ngRoute', 'ngSanitize'])
     .controller('HeaderCtrl', function($sce, $log, $scope) {
         var header = this;
 
-        //header.rootElements = [
-        //    '<li class="dropdown"><a href="#" class="dropdown-toggle toolbarButtons parametersDropDown" id="exportDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></a><ul class="dropdown-menu" ng-controller="HeaderCtrl as tester"><li ng-repeat="link in tester.exportOptions" compile-html="link"></li></ul></li>'
-        //]
         header.exportDropDown = '<li class="dropdown"><a href="#" class="dropdown-toggle toolbarButtons parametersDropDown" id="exportDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></a><ul class="dropdown-menu" ng-controller="HeaderCtrl as tester"><li ng-repeat="link in tester.exportOptions" compile-html="link"></li></ul></li>';
         header.rootElements = [
             '<li><a ng-click="openDialog.doOpen($event)" href="" class="toolbarButtons" id="openReport"><medium class="text-muted">Open Report</medium></a></li>',
@@ -89,7 +86,7 @@ angular.module('AngularBIRT.header', ['ngRoute', 'ngSanitize'])
         $scope.moveBackwardAll.doMove = function(){window.moveBackwardAll();}
         $scope.parametersToggle.doToggle = function(){window.toggleParameters();}
         $scope.saveDialog.doOpen = function() {window.openSaveFilterDialog();}
-        $scope.savedFilters.doOpen = function() {console.log('open saved filter');window.savedFilters.dialog('open');}
+        $scope.savedFilters.doOpen = function() {$('#savedFiltersOutput').append(window.savedFiltersTemplate);window.savedFilters.dialog('open');}
         $scope.openFilters.doOpen = function() {console.log('open filters');}
 
     })

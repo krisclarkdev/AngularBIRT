@@ -1,109 +1,13 @@
 $(document).ready(function() {
-    actuate.load('viewer');
-    actuate.load('parameter');
-    actuate.load('reportexplorer');
-    actuate.load("dialog");
-
-    reqOps.setRepositoryType(repoType);
-    reqOps.setVolume(volume);
-    reqOps.setCustomParameters({});
-
-    actuate.initialize(ihub, reqOps == undefined ? null : reqOps, username, password, null);
-
     dialogOpen   = $('#dialogOpen').dialog({autoOpen: false, zIndex: 10000});
     dialogSave   = $('#dialogSave').dialog({autoOpen: false, zIndex: 10000});
     dialogHelp   = $('#dialogHelp').dialog({autoOpen: false, zIndex: 10000});
     savedFilters = $('#dialogSavedFilters').dialog({autoOpen: false, zIndex: 10000, maxHeight: 450, minHeight: 450});
-    //$('#accordion').accordion();
+    savedFiltersGroup = $('#savedFiltersOutput').accordion();
 
     var footerPosition = $('.footer').position();
 
-    $('#reportViewer').width($(document).width()-200)
-
-    accordionGroups = $('#accordionGroups').accordion();
-
-    function login() {
-        var jqxhr = $.post({
-            url: window.resturl,
-            data: {
-                'username': window.restuser,
-                'password': window.restpass
-            },
-            success: function(data, status, jqxhr) {
-                console.log('1');
-            },
-            dataType: 'json'
-        });
-
-        jqxhr.always(function(data) {
-            console.log(data.authToken);
-            getFileID(data.authToken);
-            //downloadFilters(data.authToken);
-        });
-    }
-
-    function getFileID(authid) {
-        console.log(authid);
-        var jqxhr = $.ajax({
-            url: window.filesurl,
-            url: window.filesurl,
-            type: "get", //send it through get method
-            data:{'AuthToken': authid},
-            beforeSend: function(xhr){xhr.setRequestHeader('AuthToken', authid);},
-            success: function(response) {
-                //Do Something
-                test = response.itemList.file;
-                console.log();
-
-                for(i=0; i<test.length; i++) {
-                    if(test[i].name == 'filters.json') {
-                        downloadFilters(authid, test[i].id);
-                    }
-                }
-            },
-            error: function(xhr) {
-                //Do Something to handle error
-                console.log(xhr);
-            }
-        });
-    }
-
-    login();
-
-    //52020000010
-    function downloadFilters(authid, id) {
-        console.log(authid);
-        var jqxhr = $.ajax({
-            url: 'http://ihub.demoimage.com:8000/api/v2/files/'+id+'/download?base64=false',
-            type: "get", //send it through get method
-            data:{'AuthToken': authid},
-            beforeSend: function(xhr){xhr.setRequestHeader('AuthToken', authid);},
-            success: function(response) {
-                //Do Something
-                console.log(response);
-                filters = JSON.parse(response);
-                console.log(filters);
-                console.log(filters.mytable.filtername);
-
-                //for(filters)
-                for(i=0; i<filters.mytable.filter.length; i++) {
-                    filterTemplate = '<h3>'+filters.mytable.filter[i].filtername+'</h3><div><div class="checkbox"><label><input type="checkbox" value="">Patient Number</label><input type="text" value="'+filters.mytable.filter[i].value[0]+'"class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Patient Last Name</label><input value="'+filters.mytable.filter[i].value[1]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Patient First Name</label><input value="'+filters.mytable.filter[i].value[2]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Address</label><input value="'+filters.mytable.filter[i].value[3]+'"type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">City</label><input value="'+filters.mytable.filter[i].value[4]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">State</label><input value="'+filters.mytable.filter[i].value[5]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Appointment Date</label><input value="'+filters.mytable.filter[i].value[6]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Diagnosis</label><input value="'+filters.mytable.filter[i].value[7]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Doctor Comments</label><input value="'+filters.mytable.filter[i].value[8]+'" type="text" class="form-control" ></div><div class="checkbox"><label><input type="checkbox" value="">Rx</label><input value="'+filters.mytable.filter[i].value[9]+'" type="text" class="form-control" ></div></div>';
-                    //filterTemplate += filterTemplate;
-                    $('#savedFiltersOutput').append(filterTemplate);
-                }
-                $('#savedFiltersOutput').accordion({heightStyle: "fill"});
-
-
-            },
-            error: function(xhr) {
-                //Do Something to handle error
-                console.log(xhr);
-            }
-        });
-    }
-
-
-    //$('#accordionGroups').hide();
+    $('#reportViewer').width($(document).width()-200);
 
     $('#accordionGroups input[type="checkbox"]').click(function(e) {
         e.stopPropagation();
@@ -171,36 +75,6 @@ $(document).ready(function() {
             };
 
             hideColumns(viewer1.getCurrentPageContent(), myViewer);
-        }
-    });
-
-    $('.filterSelector').click(function() {
-        var elementID = $(this).attr('id');
-
-        if(elementID == 'chkFirstName'){
-            if($(this).is(":checked")) {
-                $(this).show();
-            }else{
-                $(this).hide();
-            }
-        }else if(elementID == 'chkLastName'){
-            if($(this).is(":checked")) {
-                $(this).show();
-            }else{
-                $(this).hide();
-            }
-        }else if(elementID == 'chkCity'){
-            if($(this).is(":checked")) {
-                $(this).show();
-            }else{
-                $(this).hide();
-            }
-        }else if(elementID == 'chkState'){
-            if($(this).is(":checked")) {
-                $(this).show();
-            }else{
-                $(this).hide();
-            }
         }
     });
 
@@ -473,8 +347,6 @@ $(document).ready(function() {
         }
 
     }
-
-    function getColumnNames(){}
 
     htmlbodyHeightUpdate()
     $( window ).resize(function() {

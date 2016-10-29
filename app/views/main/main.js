@@ -8,6 +8,7 @@ angular.module('AngularBIRT.main', ['ngRoute'])
   });
 }])
 
-.controller('MainCtrl', [function() {
-
-}]);
+.controller('MainCtrl', function($scope, birt) {
+  $scope.b = birt.loadBirtLibrary();
+  console.log('yup');
+});
