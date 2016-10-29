@@ -1,10 +1,4 @@
 $(document).ready(function() {
-    dialogOpen   = $('#dialogOpen').dialog({autoOpen: false, zIndex: 10000});
-    dialogSave   = $('#dialogSave').dialog({autoOpen: false, zIndex: 10000});
-    dialogHelp   = $('#dialogHelp').dialog({autoOpen: false, zIndex: 10000});
-    savedFilters = $('#dialogSavedFilters').dialog({autoOpen: false, zIndex: 10000, maxHeight: 450, minHeight: 450});
-    savedFiltersGroup = $('#savedFiltersOutput').accordion();
-
     var footerPosition = $('.footer').position();
 
     $('#reportViewer').width($(document).width()-200);
@@ -12,30 +6,6 @@ $(document).ready(function() {
     $('#accordionGroups input[type="checkbox"]').click(function(e) {
         e.stopPropagation();
     });
-
-    window.moveForwardOne = function() {
-        var next = myViewer.getCurrentPageNum() + 1;
-        if(next <= myViewer.getTotalPageCount()) {
-            $('#pageN').html(next);
-            myViewer.gotoPage(next);
-        }
-    }
-
-    window.moveBackwardOne = function() {
-        var prev = myViewer.getCurrentPageNum() - 1;
-        if(prev > 0) {
-            myViewer.gotoPage(prev);
-            $('#pageN').html(prev);
-        }
-    }
-
-    window.moveForwardAll = function() {
-        myViewer.gotoPage(myViewer.getTotalPageCount());
-    }
-
-    window.moveBackwardAll = function() {
-        myViewer.gotoPage(1);
-    }
 
     window.runReport = function() {
         console.log($('.birtParameter'));
