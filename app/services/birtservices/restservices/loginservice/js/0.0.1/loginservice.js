@@ -3,6 +3,12 @@ var app = angular.module('AngularBIRT');
 app.service('restLoginService', function($http, $q) {
     var authObject = {};
 
+    var restLogin = {
+        'username': 'Administrator',
+        'password': '',
+        'url': 'http://ihub.demoimage.com:8000/api/v2/login'
+    };
+
     this.getAuthObject = function() {
         return authObject;
     };
@@ -18,8 +24,8 @@ app.service('restLoginService', function($http, $q) {
         var deferred = $q.defer();
 
         var data = $.param({
-            'username': window.restuser,
-            'password': window.restpass
+            'username': restLogin.username,
+            'password': restLogin.password
         });
 
         var config = {
@@ -28,7 +34,7 @@ app.service('restLoginService', function($http, $q) {
             }
         }
 
-        $http.post('http://ihub.demoimage.com:8000/api/v2/login', data, config)
+        $http.post(restLogin.url, data, config)
             .then(function(response) {
                 deferred.resolve(response.data);
             });
