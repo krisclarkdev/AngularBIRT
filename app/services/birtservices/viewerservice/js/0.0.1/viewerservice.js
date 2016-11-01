@@ -82,58 +82,77 @@ app.factory('viewerService', function() {
         try {
             console.log('start 1');
             params  = new actuate.Parameter("params");
-            params.setReportName(ihub.reportDesign);
-            params.submit(test(params));
+            params.setReportName(window.reportDesign);
+            params.submit(function(){
+                //this.run.style.visibility = 'visible';
+                test(params);
+            });
+            console.log('end')
         }catch(err){
             console.log(err);
         }
     };
 
     var test = function(params) {
+        console.log('Check it');
+        //console.log(params);
+        try {
+            //console.log(params._.length);
+            var allParameters = new Array();
 
-        //console.log(params._.length);
-        var allParameters = new Array();
+            for(i=0; i<params._._paramImpl._paramDefs.length; i++) {
+                var currentParameter = {};
+                currentParameter = {
+                    'cascadingParentName': params._._paramImpl._paramDefs[i]._._cascadingParentName,
+                    'columnType': params._._paramImpl._paramDefs[i]._._columnType,
+                    'currentValue': params._._paramImpl._paramDefs[i]._._currentValue,
+                    'dataType': params._._paramImpl._paramDefs[i]._._dataType,
+                    'defaultValue': params._._paramImpl._paramDefs[i]._._defaultValue,
+                    'displayName': params._._paramImpl._paramDefs[i]._._displayName,
+                    'helpText': params._._paramImpl._paramDefs[i]._._helpText,
+                    'isAdHoc': params._._paramImpl._paramDefs[i]._._isAdHoc,
+                    'isDynamicSelectionList': params._._paramImpl._paramDefs[i]._._isDynamicSelectionList,
+                    'isHidden': params._._paramImpl._paramDefs[i]._._isHidden,
+                    'isPassword': params._._paramImpl._paramDefs[i]._._isPassword,
+                    'isRequired': params._._paramImpl._paramDefs[i]._._isRequired,
+                    'name': params._._paramImpl._paramDefs[i]._._name
+                };
+                allParameters.push(currentParameter);
+            }
 
-        for(i=0; i<params._._paramImpl._paramDefs.length; i++) {
-            var currentParameter = {};
-            currentParameter = {
-                'cascadingParentName': params._._paramImpl._paramDefs[i]._._cascadingParentName,
-                'columnType': params._._paramImpl._paramDefs[i]._._columnType,
-                'currentValue': params._._paramImpl._paramDefs[i]._._currentValue,
-                'dataType': params._._paramImpl._paramDefs[i]._._dataType,
-                'defaultValue': params._._paramImpl._paramDefs[i]._._defaultValue,
-                'displayName': params._._paramImpl._paramDefs[i]._._displayName,
-                'helpText': params._._paramImpl._paramDefs[i]._._helpText,
-                'isAdHoc': params._._paramImpl._paramDefs[i]._._isAdHoc,
-                'isDynamicSelectionList': params._._paramImpl._paramDefs[i]._._isDynamicSelectionList,
-                'isHidden': params._._paramImpl._paramDefs[i]._._isHidden,
-                'isPassword': params._._paramImpl._paramDefs[i]._._isPassword,
-                'isRequired': params._._paramImpl._paramDefs[i]._._isRequired,
-                'name': params._._paramImpl._paramDefs[i]._._name
-            };
-            allParameters.push(currentParameter);
+            console.log(allParameters);
+
+            var renderedParameters = new Array();
+            for(i=0; i<allParameters.length; i++) {
+                var currentInput = buildInput(allParameters[i].columnType,allParameters[i].name, allParameters[i].defaultValue);
+                console.log(currentInput);
+                var currentParameters = '<td>'+allParameters[i].displayName+'</td><td>'+currentInput+'</td>';
+                renderedParameters.push(currentParameters);
+
+            }
+
+            var parameterTable = '<table class="pTable"><tr>';
+
+            for(i=0; i<renderedParameters.length; i++) {
+                parameterTable += renderedParameters[i] + '</tr>'
+            }
+
+            parameterTable += '</table>';
+            $('#renderedParameters').html(parameterTable);
+            $('.parametersPane').fadeToggle( "slow", "linear" );
+            console.log('!!!!' + allParameters);
+        }catch(err){
+            console.log(err);
         }
-
-        var renderedParameters = new Array();
-        for(i=0; i<allParameters.length; i++) {
-            var currentInput = buildInput(allParameters[i].columnType,allParameters[i].name, allParameters[i].defaultValue);
-            console.log(currentInput);
-            var currentParameters = '<td>'+allParameters[i].displayName+'</td><td>'+currentInput+'</td>';
-            renderedParameters.push(currentParameters);
-
-        }
-
-        var parameterTable = '<table class="pTable"><tr>';
-
-        for(i=0; i<renderedParameters.length; i++) {
-            parameterTable += renderedParameters[i] + '</tr>'
-        }
-
-        parameterTable += '</table>';
-        $('#renderedParameters').html(parameterTable);
-        $('.parametersPane').fadeToggle( "slow", "linear" );
-        console.log('!!!!' + allParameters);
     };
+
+    var buildInput = function(inputType, inputName, defaultValue) {
+        console.log('buildInput');
+        if(inputType == 'String') {
+            console.log('<input type="input" class="birtParameter" name="'+inputName+'" value="'+defaultValue+'">');
+            return '<input type="text" class="birtParameter" name="'+inputName+'" value="'+defaultValue+'">';
+        }
+    }
 
     var exportReport = function(format) {
         switch(format) {
