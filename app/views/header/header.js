@@ -8,12 +8,9 @@ angular.module('AngularBIRT.header', ['ngRoute', 'ngSanitize'])
         });
     }])
 
-    .controller('HeaderCtrl', function($sce, $log, $scope) {
+    .controller('HeaderCtrl', function($sce, $log, $scope, viewerService) {
         var header = this;
 
-        //header.rootElements = [
-        //    '<li class="dropdown"><a href="#" class="dropdown-toggle toolbarButtons parametersDropDown" id="exportDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></a><ul class="dropdown-menu" ng-controller="HeaderCtrl as tester"><li ng-repeat="link in tester.exportOptions" compile-html="link"></li></ul></li>'
-        //]
         header.exportDropDown = '<li class="dropdown"><a href="#" class="dropdown-toggle toolbarButtons parametersDropDown" id="exportDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></a><ul class="dropdown-menu" ng-controller="HeaderCtrl as tester"><li ng-repeat="link in tester.exportOptions" compile-html="link"></li></ul></li>';
         header.rootElements = [
             '<li><a ng-click="openDialog.doOpen($event)" href="" class="toolbarButtons" id="openReport"><medium class="text-muted">Open Report</medium></a></li>',
@@ -72,24 +69,25 @@ angular.module('AngularBIRT.header', ['ngRoute', 'ngSanitize'])
         $scope.savedFilters = {};
         $scope.openFilters = {};
 
-        $scope.xls.doExport = function(){console.log('yup');window.myViewer.downloadReport("xls", null, null);};
-        $scope.xlsx.doExport = function(){window.myViewer.downloadReport("xlsx", null, null);};
-        $scope.pdf.doExport = function(){window.myViewer.downloadReport("pdf", null, null);};
-        $scope.ps.doExport = function(){window.myViewer.downloadReport("ps", null, null);};
-        $scope.ppt.doExport = function(){window.myViewer.downloadReport("ppt", null, null);};
-        $scope.pptx.doExport = function(){window.myViewer.downloadReport("pptx", null, null);};
-        $scope.doc.doExport = function(){window.myViewer.downloadReport("doc", null, null);};
-        $scope.docx.doExport = function(){window.myViewer.downloadReport("docx", null, null);};
-        $scope.xhtml.doExport = function(){window.myViewer.downloadReport("xhtml", null, null);};
-        $scope.helpDialog.doOpen = function(){window.dialogHelp.dialog('open');}
-        $scope.openDialog.doOpen = function(){window.getOpenItems(); window.dialogOpen.dialog('open');}
-        $scope.moveForwardOne.doMove = function(){window.moveForwardOne();}
-        $scope.moveForwardAll.doMove = function(){window.moveForwardAll();}
-        $scope.moveBackwardOne.doMove = function(){window.moveBackwardOne();}
-        $scope.moveBackwardAll.doMove = function(){window.moveBackwardAll();}
-        $scope.parametersToggle.doToggle = function(){window.toggleParameters();}
-        $scope.saveDialog.doOpen = function() {window.openSaveFilterDialog();}
-        $scope.savedFilters.doOpen = function() {console.log('open saved filter');window.savedFilters.dialog('open');}
+        $scope.xls.doExport = function(){viewerService.doExportReport('xls');};
+        $scope.xlsx.doExport = function(){viewerService.doExportReport('xlsx');};
+        $scope.pdf.doExport = function(){viewerService.doExportReport('pdf');};
+        $scope.ps.doExport = function(){viewerService.doExportReport('ps');};
+        $scope.ppt.doExport = function(){viewerService.doExportReport('ppt');};
+        $scope.pptx.doExport = function(){viewerService.doExportReport('pptx');};
+        $scope.doc.doExport = function(){viewerService.doExportReport('doc');};
+        $scope.docx.doExport = function(){viewerService.doExportReport('docx');};
+        $scope.xhtml.doExport = function(){viewerService.doExportReport('xhtml');};
+        $scope.helpDialog.doOpen = function(){window.dialogHelp.dialog('open');};
+        $scope.openDialog.doOpen = function(){viewerService.doOpenDialog();};
+        $scope.moveForwardOne.doMove = function(){viewerService.doMoveForward();};
+        $scope.moveForwardAll.doMove = function(){viewerService.doMoveLastPage();};
+        $scope.moveBackwardOne.doMove = function(){viewerService.doMoveBackward();};
+        $scope.moveBackwardAll.doMove = function(){viewerService.doMoveLastPage();};
+        $scope.parametersToggle = function(){alert('test');}
+        //$scope.parametersToggle.doToggle = function(){window.toggleParameters();}
+        $scope.saveDialog.doOpen = function() {viewerService.doOpenSaveDialog();};
+        $scope.savedFilters.doOpen = function() {$('#savedFiltersOutput').append(window.savedFiltersTemplate);window.savedFilters.dialog('open');}
         $scope.openFilters.doOpen = function() {console.log('open filters');}
 
     })
