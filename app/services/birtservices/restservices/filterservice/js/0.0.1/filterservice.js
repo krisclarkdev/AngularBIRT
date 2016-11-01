@@ -2,6 +2,9 @@ var app = angular.module('AngularBIRT');
 
 app.service('restFilterService', function($http, $q, restLoginService, fileid, downloadfilters) {
     var deferred = $q.defer();
+    var filters = {
+        'template': ''
+    }
 
     var downloadAllFilters = function() {
         restLoginService.doLogin().then(function(authToken){

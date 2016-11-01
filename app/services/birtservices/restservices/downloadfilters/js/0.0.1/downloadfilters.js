@@ -2,12 +2,17 @@ var app = angular.module('AngularBIRT');
 
 app.service('downloadfilters', function($http, $q) {
     var downloadFilters = function(authid, id) {
-
+        var downloadFilters = {
+            'url': {
+                'pt1': 'http://ihub.demoimage.com:8000/api/v2/files/',
+                'pt2': '/download?base64=false'
+            }
+        }
         var deferred = $q.defer();
 
         $http({
             method: 'GET',
-            url: 'http://ihub.demoimage.com:8000/api/v2/files/'+id+'/download?base64=false',
+            url: downloadFilters.url.pt1 +id+ downloadFilters.url.pt2,
             headers: {
                 'AuthToken': authid
             }

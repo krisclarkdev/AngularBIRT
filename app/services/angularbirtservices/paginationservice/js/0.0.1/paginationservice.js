@@ -4,7 +4,7 @@ app.factory('paginationService', function() {
     var paginationService = {};
 
     paginationService.doMoveForward  = function(){moveForward();};
-    paginationService.doMoveBackward = function(){moveBackward();}
+    paginationService.doMoveBackward = function(){moveBackward();};
     paginationService.doMoveFistPage = function(){moveFirstPage();};
     paginationService.doMoveLastPage = function(){moveLastPage();};
 

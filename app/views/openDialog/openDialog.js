@@ -8,8 +8,9 @@ angular.module('AngularBIRT.openDialog', ['ngRoute'])
         });
     }])
 
-    .controller('OpenDialogCtrl', function($scope) {
+    .controller('OpenDialogCtrl', function($scope, viewerService) {
         $scope.reportExecutor = {};
 
-        $scope.reportExecutor.doExecute = function() {window.runReport();}
+        $scope.reportExecutor.doExecute = function() {viewerService.doExecuteReport('reportdesign', 'parameters')}
+        //$scope.reportExecutor.doExecute = function() {window.runReport();}
     });
