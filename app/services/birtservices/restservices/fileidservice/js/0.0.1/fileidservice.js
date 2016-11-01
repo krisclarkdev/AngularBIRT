@@ -1,12 +1,15 @@
 var app = angular.module('AngularBIRT');
 
 app.service('fileid', function($http, $q) {
+    var files = {
+        'url': 'http://ihub.demoimage.com:8000/api/v2/files'
+    }
     var getFileID = function(authid) {
         var deferred = $q.defer();
 
         $http({
             method: 'GET',
-            url: window.filesurl,
+            url: files.url,
             headers: {
                 'AuthToken': authid
             }
