@@ -1,8 +1,7 @@
 var app = angular.module('AngularBIRT');
 
-app.service('angularBirtInitService', function($http, $q, restFilterService, jsapiInitService, jsapiModuleService) {
+app.service('angularBirtInitService', function($http, $q, restFilterService, jsapiInitService) {
     var init = function() {
-        jsapiModuleService.doLoadModules();
         jsapiInitService.doActuateInit();
         restFilterService.doDownloadAllFilters().then(function(filters) {window.filters = filters;});
     }
