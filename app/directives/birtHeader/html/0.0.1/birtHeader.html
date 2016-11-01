@@ -18,8 +18,6 @@
                         <li ng-repeat="link in tester.exportOptions"
                             compile-html="link">
                         </li>
-                        <!--<li><a ng-click="xls.doExport($event)" class="exportOption" href="" id="exportXls"><i class="fa fa-file-excel-o" aria-hidden="true"></i> {{tester.XlsOption}}</a></li>-->
-                        <!--<li><a ng-click="xls.doExport($event)" class="exportOption" href="" id="exportXls"><i class="fa fa-file-excel-o" aria-hidden="true"></i> {{HeaderCtrl.XlsOption}}</a></li>-->
 
                     </ul>
                 </li>
@@ -50,7 +48,7 @@
                         <td style="padding: 5px 5px 5px 5px;"><a class="navigation" id="pageOf" class="navbar-brand" href=""></a></td>
                         <td style="padding: 5px 5px 5px 5px;"><a class="navigation" id="pageM" class="navbar-brand" href=""><div id="lastPage"></div></a></td>
                         <td style="padding: 5px 0px 5px 5px;"><a ng-click="moveForwardOne.doMove()" class="navigation" id="nextPage" class="navbar-brand" href=""><i class="fa fa-forward" aria-hidden="true"></i></a></td>
-                        <td style="padding: 5px 10px 5px 5px;"><a ng-click="moveForwardAll()" class="navigation" id="lastPageLink" class="navbar-brand" href=""><i class="fa fa-step-forward" aria-hidden="true"></i></a></td>
+                        <td style="padding: 5px 10px 5px 5px;"><a ng-click="moveForwardAll.doMove()" class="navigation" id="lastPageLink" class="navbar-brand" href=""><i class="fa fa-step-forward" aria-hidden="true"></i></a></td>
                     </tr>
                 </table>
             </div>

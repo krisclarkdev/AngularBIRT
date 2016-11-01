@@ -24,9 +24,12 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   $routeProvider.otherwise({redirectTo: '/main'});
 }]);
 
-angular.module('AngularBIRT').run(function($rootScope, angularBirtInitService) {
+angular.module('AngularBIRT').run(function($rootScope, viewerService, angularBirtConstructor) {
   try {
-    angularBirtInitService.doInit();
+    viewerService.doLoadModules();
+    viewerService.doInitActuate();
+
+    angularBirtConstructor.doInit();
   }catch(ex){
     console.log(ex);
   }
