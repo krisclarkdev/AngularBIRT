@@ -14,44 +14,32 @@
             <ul class="nav navbar-nav">
                 <li class="dropdown" ng-controller="HeaderCtrl" as headerItems>
                     <a href="#" class="dropdown-toggle toolbarButtons parametersDropDown" id="exportDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                    <ul class="dropdown-menu" ng-controller="HeaderCtrl as tester">
-                        <li ng-repeat="link in tester.exportOptions"
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="link in headerContent.exportOptions"
                             compile-html="link">
                         </li>
 
                     </ul>
                 </li>
-                <li><a ng-click="openDialog.doOpen($event)" href="" class="toolbarButtons" id="openReport"><medium class="text-muted">Open Report</medium></a></li>
-                <li><a href="" ng-click="saveDialog.doOpen()" class="toolbarButtons" id="save" href=""><medium class="text-muted">Save</medium></a></li>
+                <li><a ng-click="openDialog.doOpen($event)" href="" class="toolbarButtons" id="openReport"><medium class="text-muted">{{lblOpenReport}}</medium></a></li>
+                <li><a href="" ng-click="saveDialog.doOpen()" class="toolbarButtons" id="save" href=""><medium class="text-muted">{{lblSaveReport}}</medium></a></li>
                 <li class="dropdown">
-                    <!--<a href="#" class="dropdown-toggle toolbarButtons parametersDropDown" id="filterGroupsDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><medium class="text-muted">Filters <span class="caret"></span></medium></a>-->
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle parametersDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><medium class="text-muted">Filters <span class="caret"></span></medium></a>
+                    <a href="#" class="dropdown-toggle parametersDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><medium class="text-muted">{{lblFilterDropDown}} <span class="caret"></span></medium></a>
                     <ul class="dropdown-menu">
-                        <li><a ng-click="savedFilters.doOpen()" href="">Saved Filters</a></li>
-                        <li><a ng-click="openFilters.doOpen()" href="">Open Filters</a></li>
+                        <li><a ng-click="savedFilters.doOpen()" href="">{{lblSavedFilters}}</a></li>
+                        <li><a ng-click="openFilters.doOpen()"  href="">{{lblOpenFilters}}</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle parametersDropDown" id="parametersDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><medium class="text-muted">Parameters <span class="caret"></span></medium></a>
-                </li>
-                <li><a href="" class="toolbarButtons" ng-click="helpDialog.doOpen($event)" id="help"><medium class="text-muted">Help</medium></a></li>
+                <li><a ng-click="parameters.doOpen()" href="" class="toolbarButtons" id="parametersDropDwn"><medium class="text-muted">{{lblParametersDialog}}</medium></a></li>
+                <li><a href="" class="toolbarButtons" ng-click="helpDialog.doOpen($event)" id="help"><medium class="text-muted">{{lblHelpDialog}}</medium></a></li>
             </ul>
-            <div class="pull-right">
+            <div class="pull-right" ng-controller="HeaderCtrl">
                 <table>
                     <tr>
-                        <td style="padding: 5px 10px 5px 5px;"><small id="reportName" class="text-muted">Please open a report</small></td>
-                        <td style="padding: 5px 0px 5px 5px;"><a ng-click="moveBackwardAll.doMove()" class="navigation" id="firstPageLink" class="navbar-brand" href=""><i class="fa fa-step-backward" aria-hidden="true"></i></a></td>
-                        <td style="padding: 5px 5px 5px 5px;"><a ng-click="moveBackwardOne.doMove()" class="navigation" id="prevPage" class="navbar-brand" href=""><i class="fa fa-backward" aria-hidden="true"></i></a></td>
-                        <td style="padding: 5px 5px 5px 5px;"><a class="navigation" id="pageN" class="navbar-brand" href=""></a></td>
-                        <td style="padding: 5px 5px 5px 5px;"><a class="navigation" id="pageOf" class="navbar-brand" href=""></a></td>
-                        <td style="padding: 5px 5px 5px 5px;"><a class="navigation" id="pageM" class="navbar-brand" href=""><div id="lastPage"></div></a></td>
-                        <td style="padding: 5px 0px 5px 5px;"><a ng-click="moveForwardOne.doMove()" class="navigation" id="nextPage" class="navbar-brand" href=""><i class="fa fa-forward" aria-hidden="true"></i></a></td>
-                        <td style="padding: 5px 10px 5px 5px;"><a ng-click="moveForwardAll.doMove()" class="navigation" id="lastPageLink" class="navbar-brand" href=""><i class="fa fa-step-forward" aria-hidden="true"></i></a></td>
+                        <td class="birtNav" ng-repeat = "birtNav in headerContent.navigation" compile-html="birtNav"></td>
                     </tr>
                 </table>
             </div>
-        </div><!--/.nav-collapse -->
+        </div>
     </div>
 </nav>
