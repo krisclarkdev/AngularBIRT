@@ -4,10 +4,7 @@ var monthDays = [];
 
 angular.module('AngularBIRT.app', ['ngRoute', 'ngSanitize'])
 
-    .config(['$routeProvider', function($routeProvider) {
-        $routeProvider.when('/header', {
-            controller: 'AngularBirtCtrl'
-        });
+    .config(['$routeProvider', function() {
     }])
 
     .controller('AngularBirtCtrl', function($sce, $log, $scope, viewerService) {
