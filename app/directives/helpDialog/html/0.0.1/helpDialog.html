@@ -1,6 +1,13 @@
-<div data-dialog id="dialogHelp" class="toolbarDialogButton" ng-controller="AngularBirtCtrl" title="Help">
-    <p ng-click="myData.doClick($event)">AngularBIRT is an example interactive viewer for BIRT and InformationHub 16.  This example code is not meant for
-        production use and is merely a way to show integration into your application using OpenText InformationHub's JavaScript
-        API and Angular.</p>
+<div data-dialog id="dialogHelp" class="toolbarDialogButton" ng-controller="AngularBirtCtrl" title="{{angularBirt.app.help.title}}">
+    <p ng-click="myData.doClick($event)">{{angularBirt.app.help.text}}</p><br/>
+    <p>
+        <!-- TODO: Use ng-repeat here -->
+        <table class="licenses">
+            <tr><td>AngularJS</td><td><a href="https://raw.githubusercontent.com/angular/angular.js/master/LICENSE">MIT License</a></td></tr>
+            <tr><td>Font Awesome Font by Dave Gandy</td><td><a href="http://fontawesome.io">Website</a></td></tr>
+            <tr><td>Font Awesome Font</td><td><a href="http://fontawesome.io/license/">SIL OFL 1.1 License</a></td></tr>
+            <tr><td>Font Awesome Code</td><td><a href="http://fontawesome.io/license/">MIT License</a></td></tr>
+        </table>
+    </p>
     <button class="btn btn-success" id="btnHelpOK">OK</button><button class="btn btn-success execute" id="btnHelpCancel">Cancel</button>
 </div>

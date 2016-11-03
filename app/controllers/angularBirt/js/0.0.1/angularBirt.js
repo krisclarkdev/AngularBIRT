@@ -8,49 +8,28 @@ angular.module('AngularBIRT.app', ['ngRoute', 'ngSanitize'])
     }])
 
     .controller('AngularBirtCtrl', function($sce, $log, $scope, viewerService) {
-        $scope.xls              = {};
-        $scope.xlsx             = {};
-        $scope.pdf              = {};
-        $scope.ps               = {};
-        $scope.ppt              = {};
-        $scope.pptx             = {};
-        $scope.doc              = {};
-        $scope.docx             = {};
-        $scope.xhtml            = {};
-        $scope.report           = {};
-        $scope.saveDialog       = {};
-        $scope.openDialog       = {};
-        $scope.helpDialog       = {};
-        $scope.moveForwardOne   = {};
-        $scope.moveForwardAll   = {};
-        $scope.moveBackwardOne  = {};
-        $scope.moveBackwardAll  = {};
-        $scope.parametersCancel = {};
-        $scope.parameters       = {};
-        $scope.saveDialog       = {};
-        $scope.savedFilters     = {};
-        $scope.openFilters      = {};
-        $scope.reportExecutor   = {};
-        $scope.myData           = {};
-
         $scope.angularBirt = {
             app: {
-              title: 'AngularBIRT',
-              css: [
-                  {href: 'resources/jquery-ui/css/1.12.1/jquery-ui.structure.min.css'},
-                  {href: 'resources/jquery-ui/css/1.12.1/jquery-ui.min.css'},
-                  {href: 'resources/jquery-ui/css/1.12.1/jquery-ui.theme.min.css'},
-                  {href: 'resources/bootstrap/css/3.3.7/bootstrap.min.css'},
-                  {href: 'resources/bootstrap/css/3.3.7/bootstrap.min.css.map'},
-                  {href: 'resources/bootstrap/css/3.3.7/bootstrap-theme.min.css'},
-                  {href: 'resources/bootstrap/css/3.3.7/bootstrap-theme.min.css.map'},
-                  {href: 'bower_components/html5-boilerplate/dist/css/normalize.css'},
-                  {href: 'bower_components/html5-boilerplate/dist/css/main.css'},
-                  {href: 'resources/angularbirt/css/0.0.1/AngularBIRT.css'},
-                  {href: 'resources/fontawesome/css/4.7.0/font-awesome.min.css'},
-                  {href: 'app.css'},
-                  {href: 'bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js'}
-              ]
+                title: 'AngularBIRT',
+                css: [
+                    {href: 'resources/jquery-ui/css/1.12.1/jquery-ui.structure.min.css'},
+                    {href: 'resources/jquery-ui/css/1.12.1/jquery-ui.min.css'},
+                    {href: 'resources/jquery-ui/css/1.12.1/jquery-ui.theme.min.css'},
+                    {href: 'resources/bootstrap/css/3.3.7/bootstrap.min.css'},
+                    {href: 'resources/bootstrap/css/3.3.7/bootstrap.min.css.map'},
+                    {href: 'resources/bootstrap/css/3.3.7/bootstrap-theme.min.css'},
+                    {href: 'resources/bootstrap/css/3.3.7/bootstrap-theme.min.css.map'},
+                    {href: 'bower_components/html5-boilerplate/dist/css/normalize.css'},
+                    {href: 'bower_components/html5-boilerplate/dist/css/main.css'},
+                    {href: 'resources/angularbirt/css/0.0.1/AngularBIRT.css'},
+                    {href: 'resources/fontawesome/css/4.7.0/font-awesome.min.css'},
+                    {href: 'app.css'},
+                    {href: 'bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js'}
+                ],
+                help: {
+                    text: 'AngularBIRT is an example interactive viewer for BIRT and InformationHub 16.  This example code is not meant for production use and is merely a way to show integration into your application using OpenText InformationHub\'s JavaScript API and Angular.',
+                    title: 'Help'
+                }
             },
             labels: {
                 credits: {
@@ -126,8 +105,30 @@ angular.module('AngularBIRT.app', ['ngRoute', 'ngSanitize'])
             }
         };
 
-        // Leaving in for reference
-        //for (var i = 0; i < $scope.angularBirt.headerContent.exportOptions.length; i++) {$scope.angularBirt.headerContent.exportOptions[i] = $sce.trustAsHtml($scope.angularBirt.headerContent.exportOptions[i]);}
+        $scope.xls              = {};
+        $scope.xlsx             = {};
+        $scope.pdf              = {};
+        $scope.ps               = {};
+        $scope.ppt              = {};
+        $scope.pptx             = {};
+        $scope.doc              = {};
+        $scope.docx             = {};
+        $scope.xhtml            = {};
+        $scope.report           = {};
+        $scope.saveDialog       = {};
+        $scope.openDialog       = {};
+        $scope.helpDialog       = {};
+        $scope.moveForwardOne   = {};
+        $scope.moveForwardAll   = {};
+        $scope.moveBackwardOne  = {};
+        $scope.moveBackwardAll  = {};
+        $scope.parametersCancel = {};
+        $scope.parameters       = {};
+        $scope.saveDialog       = {};
+        $scope.savedFilters     = {};
+        $scope.openFilters      = {};
+        $scope.reportExecutor   = {};
+        $scope.myData           = {};
 
         $scope.xls.doExport             = function(){viewerService.doExportReport('xls');};
         $scope.xlsx.doExport            = function(){viewerService.doExportReport('xlsx');};
@@ -151,5 +152,8 @@ angular.module('AngularBIRT.app', ['ngRoute', 'ngSanitize'])
         $scope.reportExecutor.doExecute = function() {viewerService.doExecuteReport('reportdesign', 'parameters')};
         $scope.report.doSave            = function(){viewerService.doSaveReport();};
         $scope.myData.doClick           = function() {alert(window.dialogHelp.dialog('close'));};
+
+        // Leaving in for reference
+        //for (var i = 0; i < $scope.angularBirt.headerContent.exportOptions.length; i++) {$scope.angularBirt.headerContent.exportOptions[i] = $sce.trustAsHtml($scope.angularBirt.headerContent.exportOptions[i]);}
     })
 ;
