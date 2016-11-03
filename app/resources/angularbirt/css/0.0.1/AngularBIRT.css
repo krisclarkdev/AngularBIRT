@@ -6,6 +6,7 @@
 .filterText { display: none; }
 .navbar-fixed-top { z-index: 1000 !important;}
 #reportViewer{ padding-left: 50px; height: 100%;}
+.birtNav{ padding: 5px 10px 5px 5px; }
 
 .ui-accordion-content { min-height: 300px;}
 

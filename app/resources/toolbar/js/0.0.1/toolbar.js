@@ -21,11 +21,12 @@ function openFiltersDropDown() {
 function openParametersDropDown() {
     $('#accordionGroups').hide();
     $('.parameterButtons').show();
-    $('.pTable').show();
+    $('#parametersContent').dialog();
+    //$('.pTable').show();
     //$('#filterGroupsPane').hide();
     //$('.parametersContent').show();
     //$('#filterGroupsPane').show();
-    $('.parametersPane').fadeToggle( "slow", "linear" );
+    //$('.parametersPane').fadeToggle( "slow", "linear" );
 }
 
 function openHelpDialog() {

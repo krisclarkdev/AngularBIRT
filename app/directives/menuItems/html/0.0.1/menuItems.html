@@ -1,0 +1,23 @@
+<ul class="nav navbar-nav">
+    <li class="dropdown" ng-controller="AngularBirtCtrl" as headerItems>
+        <a href="#" class="dropdown-toggle toolbarButtons parametersDropDown" id="exportDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></a>
+        <ul class="dropdown-menu">
+            <li ng-repeat="link in angularBirt.headerContent.exportOptions"
+                compile-html="link">
+            </li>
+
+        </ul>
+    </li>
+    <li><a ng-click="openDialog.doOpen($event)" href="" class="toolbarButtons" id="openReport"><medium class="text-muted">{{angularBirt.labels.topNav.openReport}}</medium></a></li>
+    <li><a href="" ng-click="saveDialog.doOpen()" class="toolbarButtons" id="save" href=""><medium class="text-muted">{{angularBirt.labels.topNav.saveReport}}</medium></a></li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle parametersDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><medium class="text-muted">{{angularBirt.labels.topNav.filters}} <span class="caret"></span></medium></a>
+        <ul class="dropdown-menu">
+            <li><a ng-click="savedFilters.doOpen()" href="">{{angularBirt.labels.topNav.savedFilters}}</a></li>
+            <li><a ng-click="openFilters.doOpen()"  href="">{{angularBirt.labels.topNav.openFilters}}</a></li>
+        </ul>
+    </li>
+    <li><a ng-click="parameters.doOpen()" href="" class="toolbarButtons" id="parametersDropDwn"><medium class="text-muted">{{angularBirt.labels.topNav.parameters}}</medium></a></li>
+    <li><a href="" class="toolbarButtons" ng-click="helpDialog.doOpen($event)" id="help"><medium class="text-muted">{{angularBirt.labels.topNav.help}}</medium></a></li>
+</ul>
+<div birt-navigation class="pull-right"></div>

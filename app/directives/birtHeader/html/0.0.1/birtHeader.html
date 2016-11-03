@@ -1,5 +1,5 @@
 <!-- Fixed navbar -->
-<nav class="navbar navbar-default navbar-fixed-top" ng-controller="HeaderCtrl">
+<nav class="navbar navbar-default navbar-fixed-top" ng-controller="AngularBirtCtrl">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -10,36 +10,7 @@
             </button>
             <a class="navbar-brand" href="#">{{ '%PROJECTNAME%' | projectname }}</a>
         </div>
-        <div id="navbar" class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li class="dropdown" ng-controller="HeaderCtrl" as headerItems>
-                    <a href="#" class="dropdown-toggle toolbarButtons parametersDropDown" id="exportDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-bars" aria-hidden="true"></i></a>
-                    <ul class="dropdown-menu">
-                        <li ng-repeat="link in headerContent.exportOptions"
-                            compile-html="link">
-                        </li>
-
-                    </ul>
-                </li>
-                <li><a ng-click="openDialog.doOpen($event)" href="" class="toolbarButtons" id="openReport"><medium class="text-muted">{{lblOpenReport}}</medium></a></li>
-                <li><a href="" ng-click="saveDialog.doOpen()" class="toolbarButtons" id="save" href=""><medium class="text-muted">{{lblSaveReport}}</medium></a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle parametersDropDown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><medium class="text-muted">{{lblFilterDropDown}} <span class="caret"></span></medium></a>
-                    <ul class="dropdown-menu">
-                        <li><a ng-click="savedFilters.doOpen()" href="">{{lblSavedFilters}}</a></li>
-                        <li><a ng-click="openFilters.doOpen()"  href="">{{lblOpenFilters}}</a></li>
-                    </ul>
-                </li>
-                <li><a ng-click="parameters.doOpen()" href="" class="toolbarButtons" id="parametersDropDwn"><medium class="text-muted">{{lblParametersDialog}}</medium></a></li>
-                <li><a href="" class="toolbarButtons" ng-click="helpDialog.doOpen($event)" id="help"><medium class="text-muted">{{lblHelpDialog}}</medium></a></li>
-            </ul>
-            <div class="pull-right" ng-controller="HeaderCtrl">
-                <table>
-                    <tr>
-                        <td class="birtNav" ng-repeat = "birtNav in headerContent.navigation" compile-html="birtNav"></td>
-                    </tr>
-                </table>
-            </div>
+        <div menu-items id="navbar" class="collapse navbar-collapse">
         </div>
     </div>
 </nav>

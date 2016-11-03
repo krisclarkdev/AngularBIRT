@@ -4,17 +4,8 @@
 angular.module('AngularBIRT', [
   'ngRoute',
   'ngSanitize',
-  'AngularBIRT.footer',
-  'AngularBIRT.header',
-  'AngularBIRT.helpDialog',
+  'AngularBIRT.app',
   'AngularBIRT.main',
-  'AngularBIRT.openDialog',
-  'AngularBIRT.parameterDivider',
-  'AngularBIRT.parameters',
-  'AngularBIRT.savedFilters',
-  'AngularBIRT.saveDialog',
-  'AngularBIRT.social',
-  'AngularBIRT.viewReport',
   'AngularBIRT.project',
   'AngularBIRT.version'
 ]).

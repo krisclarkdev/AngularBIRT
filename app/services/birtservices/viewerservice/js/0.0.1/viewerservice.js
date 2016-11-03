@@ -139,7 +139,8 @@ app.factory('viewerService', function() {
 
             parameterTable += '</table>';
             $('#renderedParameters').html(parameterTable);
-            $('.parametersPane').fadeToggle( "slow", "linear" );
+            parametersDialog.dialog('open');
+            //$('.parametersPane').fadeToggle( "slow", "linear" );
             console.log('!!!!' + allParameters);
         }catch(err){
             console.log(err);
@@ -256,6 +257,10 @@ app.factory('viewerService', function() {
         });
     };
 
+    var openParametersDialog = function() {
+        parametersDialog.dialog('open');
+    }
+
     var openSaveDialog = function() {
         try {
             var itemsPane = ihub.saveItemsPane;
@@ -287,6 +292,10 @@ app.factory('viewerService', function() {
         });
     };
 
+    var openHelpDialog = function() {
+        dialogHelp.dialog('open');
+    };
+
     viewerService.doLoadModules    = function() {
         loadModules();
     };
@@ -307,6 +316,8 @@ app.factory('viewerService', function() {
     viewerService.doOpenDialog     = function(){openOpenDialog();};
     viewerService.doOpenSaveDialog = function(){openSaveDialog();};
     viewerService.doSaveReport     = function(){saveReport();};
+    viewerService.doOpenParameters = function(){openParametersDialog();};
+    viewerService.doOpenHelpDialog = function(){openHelpDialog();};
 
     return viewerService;
 });
