@@ -8,6 +8,54 @@ angular.module('AngularBIRT.app', ['ngRoute', 'ngSanitize'])
     }])
 
     .controller('AngularBirtCtrl', function($sce, $log, $scope, viewerService) {
+        $scope.xls              = {};
+        $scope.xlsx             = {};
+        $scope.pdf              = {};
+        $scope.ps               = {};
+        $scope.ppt              = {};
+        $scope.pptx             = {};
+        $scope.doc              = {};
+        $scope.docx             = {};
+        $scope.xhtml            = {};
+        $scope.report           = {};
+        $scope.saveDialog       = {};
+        $scope.openDialog       = {};
+        $scope.helpDialog       = {};
+        $scope.moveForwardOne   = {};
+        $scope.moveForwardAll   = {};
+        $scope.moveBackwardOne  = {};
+        $scope.moveBackwardAll  = {};
+        $scope.parametersCancel = {};
+        $scope.parameters       = {};
+        $scope.saveDialog       = {};
+        $scope.savedFilters     = {};
+        $scope.openFilters      = {};
+        $scope.reportExecutor   = {};
+        $scope.myData           = {};
+
+        $scope.xls.doExport             = function(){viewerService.doExportReport('xls');};
+        $scope.xlsx.doExport            = function(){viewerService.doExportReport('xlsx');};
+        $scope.pdf.doExport             = function(){viewerService.doExportReport('pdf');};
+        $scope.ps.doExport              = function(){viewerService.doExportReport('ps');};
+        $scope.ppt.doExport             = function(){viewerService.doExportReport('ppt');};
+        $scope.pptx.doExport            = function(){viewerService.doExportReport('pptx');};
+        $scope.doc.doExport             = function(){viewerService.doExportReport('doc');};
+        $scope.docx.doExport            = function(){viewerService.doExportReport('docx');};
+        $scope.xhtml.doExport           = function(){viewerService.doExportReport('xhtml');};
+        $scope.helpDialog.doOpen        = function(){viewerService.doOpenHelpDialog();};
+        $scope.openDialog.doOpen        = function(){viewerService.doOpenDialog();};
+        $scope.moveForwardOne.doMove    = function(){viewerService.doMoveForward();};
+        $scope.moveForwardAll.doMove    = function(){viewerService.doMoveLastPage();};
+        $scope.moveBackwardOne.doMove   = function(){console.log('test');viewerService.doMoveBackward();};
+        $scope.moveBackwardAll.doMove   = function(){viewerService.doMoveLastPage();};
+        $scope.parameters.doOpen        = function(){viewerService.doOpenParameters();};
+        $scope.saveDialog.doOpen        = function() {viewerService.doOpenSaveDialog();};
+        $scope.savedFilters.doOpen      = function() {$('#savedFiltersOutput').append(window.savedFiltersTemplate);window.savedFilters.dialog('open');}
+        $scope.openFilters.doOpen       = function() {console.log('open filters');};
+        $scope.reportExecutor.doExecute = function() {viewerService.doExecuteReport('reportdesign', 'parameters')};
+        $scope.report.doSave            = function(){viewerService.doSaveReport();};
+        $scope.myData.doClick           = function() {alert(window.dialogHelp.dialog('close'));};
+
         $scope.angularBirt = {
             app: {
                 title: 'AngularBIRT',
@@ -68,29 +116,6 @@ angular.module('AngularBIRT.app', ['ngRoute', 'ngSanitize'])
                 }
             },
             headerContent: {
-                exportOptions: [
-                    '<a ng-click="xls.doExport()" class="exportOption" href="" id="exportXls"><i class="fa fa-file-excel-o" aria-hidden="true"></i> XLS</a>',
-                    '<a ng-click="xlsx.doExport()"  href="" id="exportXlsx"><i  class="fa fa-file-excel-o"                  aria-hidden="true"></i> Excel (XLSX)</a>',
-                    '<a ng-click="pdf.doExport()"   href="" id="exportPdf"><i   class="fa fa-file-pdf-o"                    aria-hidden="true"></i> PDF</a>',
-                    '<a ng-click="ps.doExport()"    href="" id="exportPs"><i    class="fa fa-paragraph"                     aria-hidden="true"></i> PostScript (PS)</a>',
-                    '<a ng-click="ppt.doExport()"   href="" id="exportPpt"><i   class="fa fa-file-powerpoint-o"             aria-hidden="true"></i> PowerPoint (PPT)</a>',
-                    '<a ng-click="pptx.doExport()"  href="" id="exportPptx"><i  class="fa fa-file-powerpoint-o"             aria-hidden="true"></i> PowerPoint (PPTX)</a>',
-                    '<a ng-click="doc.doExport()"   href="" id="exportDoc"><i   class="fa fa-file-word-o"                   aria-hidden="true"></i> Word (DOC)</a>',
-                    '<a ng-click="docx.doExport()"  href="" id="exportDocx"><i  class="fa fa-file-word-o"                   aria-hidden="true"></i> Word (DOCX)</a>',
-                    '<a ng-click="xhtml.doExport()" href="" id="exportXhtml"><i class="fa fa-internet-explorer"             aria-hidden="true"></i> XHTML</a>',
-                    '<li role="separator" class="divider"></li>',
-                    '<a ng-click="print.doPrint()" href=""><i class="fa fa-print toPrinter" aria-hidden="true"></i> Print</a></li>'
-                ],
-                navigation:[
-                    '<small class="rpeortName text-muted" id="reportName">Please open a report</small>',
-                    '<a class="navigation navbar-brand"   id="firstPageLink" ng-click="moveBackwardAll.doMove()" href=""><i class="fa fa-step-backward" aria-hidden="true"></i></a>',
-                    '<a class="navigation navbar-brand"   id="prevPage"      ng-click="moveBackwardOne.doMove()" href=""><i class="fa fa-backward"      aria-hidden="true"></i></a>',
-                    '<a class="navigation navbar-brand"   id="pageN"         href=""></a>',
-                    '<a class="navigation navbar-brand"   id="pageOf"        href=""></a>',
-                    '<a class="navigation navbar-brand"   id="pageM"         href=""><div id="lastPage"></div></a>',
-                    '<a class="navigation navbar-brand"   id="nextPage"      ng-click="moveForwardOne.doMove()" href=""><i class="fa fa-forward"      aria-hidden="true"></i></a>',
-                    '<a class="navigation navbar-brand"   id="lastPageLink"  ng-click="moveForwardAll.doMove()" href=""><i class="fa fa-step-forward" aria-hidden="true"></i></a>'
-                ],
                 social:[
                     '<a href="http://{{angularBirt.social.hrefs.facebook}}/{{angularBirt.social.usernames.facebook}}"       class="entypo-facebook"    target="_blank"><i class="fa fa-facebook"    aria-hidden="true"></i><span>Facebook</span></a>',
                     '<a href="http://{{angularBirt.social.hrefs.twitter}}/{{angularBirt.social.usernames.twitter}}"         class="entypo-twitter"     target="_blank"><i class="fa fa-twitter"     aria-hidden="true"></i><span>Twitter</span></a>',
@@ -104,54 +129,6 @@ angular.module('AngularBIRT.app', ['ngRoute', 'ngSanitize'])
                 ]
             }
         };
-
-        $scope.xls              = {};
-        $scope.xlsx             = {};
-        $scope.pdf              = {};
-        $scope.ps               = {};
-        $scope.ppt              = {};
-        $scope.pptx             = {};
-        $scope.doc              = {};
-        $scope.docx             = {};
-        $scope.xhtml            = {};
-        $scope.report           = {};
-        $scope.saveDialog       = {};
-        $scope.openDialog       = {};
-        $scope.helpDialog       = {};
-        $scope.moveForwardOne   = {};
-        $scope.moveForwardAll   = {};
-        $scope.moveBackwardOne  = {};
-        $scope.moveBackwardAll  = {};
-        $scope.parametersCancel = {};
-        $scope.parameters       = {};
-        $scope.saveDialog       = {};
-        $scope.savedFilters     = {};
-        $scope.openFilters      = {};
-        $scope.reportExecutor   = {};
-        $scope.myData           = {};
-
-        $scope.xls.doExport             = function(){viewerService.doExportReport('xls');};
-        $scope.xlsx.doExport            = function(){viewerService.doExportReport('xlsx');};
-        $scope.pdf.doExport             = function(){viewerService.doExportReport('pdf');};
-        $scope.ps.doExport              = function(){viewerService.doExportReport('ps');};
-        $scope.ppt.doExport             = function(){viewerService.doExportReport('ppt');};
-        $scope.pptx.doExport            = function(){viewerService.doExportReport('pptx');};
-        $scope.doc.doExport             = function(){viewerService.doExportReport('doc');};
-        $scope.docx.doExport            = function(){viewerService.doExportReport('docx');};
-        $scope.xhtml.doExport           = function(){viewerService.doExportReport('xhtml');};
-        $scope.helpDialog.doOpen        = function(){viewerService.doOpenHelpDialog();};
-        $scope.openDialog.doOpen        = function(){viewerService.doOpenDialog();};
-        $scope.moveForwardOne.doMove    = function(){viewerService.doMoveForward();};
-        $scope.moveForwardAll.doMove    = function(){viewerService.doMoveLastPage();};
-        $scope.moveBackwardOne.doMove   = function(){viewerService.doMoveBackward();};
-        $scope.moveBackwardAll.doMove   = function(){viewerService.doMoveLastPage();};
-        $scope.parameters.doOpen        = function(){viewerService.doOpenParameters();};
-        $scope.saveDialog.doOpen        = function() {viewerService.doOpenSaveDialog();};
-        $scope.savedFilters.doOpen      = function() {$('#savedFiltersOutput').append(window.savedFiltersTemplate);window.savedFilters.dialog('open');}
-        $scope.openFilters.doOpen       = function() {console.log('open filters');};
-        $scope.reportExecutor.doExecute = function() {viewerService.doExecuteReport('reportdesign', 'parameters')};
-        $scope.report.doSave            = function(){viewerService.doSaveReport();};
-        $scope.myData.doClick           = function() {alert(window.dialogHelp.dialog('close'));};
 
         // Leaving in for reference
         //for (var i = 0; i < $scope.angularBirt.headerContent.exportOptions.length; i++) {$scope.angularBirt.headerContent.exportOptions[i] = $sce.trustAsHtml($scope.angularBirt.headerContent.exportOptions[i]);}
